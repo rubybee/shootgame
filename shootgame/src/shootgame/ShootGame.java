@@ -2,8 +2,10 @@ package shootgame;
 
 import javax.swing.JFrame;
 
-public class ShootGame extends JFrame{
-	
+import Screen.Mainclass;
+
+public class ShootGame extends JFrame {
+
 	public ShootGame() {
 		setTitle("Shoot Game");
 		setSize(Mainclass.SCREEN_WIDTH, Mainclass.SCREEN_HEIGHT);
@@ -13,4 +15,5 @@ public class ShootGame extends JFrame{
 		setVisible(true);
 	}
 
+	
 }

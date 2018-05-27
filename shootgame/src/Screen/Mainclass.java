@@ -1,4 +1,6 @@
-package shootgame;
+package Screen;
+
+import shootgame.ShootGame;
 
 public class Mainclass {
 	
