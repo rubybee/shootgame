@@ -2,8 +2,6 @@ package shootgame;
 
 import javax.swing.JFrame;
 
-import Screen.Mainclass;
-
 public class ShootGame extends JFrame {
 
 	public ShootGame() {
