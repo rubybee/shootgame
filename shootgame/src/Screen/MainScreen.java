@@ -18,6 +18,7 @@ public class MainScreen implements Screen {
 	Image arrow;
 	Font titlefont= new Font("Arial", Font.BOLD, 70);
 	Font normalfont = new Font("Arial", Font.BOLD, 40);
+	Font helpfont = new Font("Arial", Font.PLAIN, 30);
 	Sound changesound;
 	Sound entersound;
 	
@@ -47,7 +48,15 @@ public class MainScreen implements Screen {
 	public void pressEnter() {
 		entersound = new Sound("enter sound.mp3", false);
 		entersound.start();
-		if(y == 550) System.exit(0);
+		if(y == 550) {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.exit(0);
+		}
 		else ShootGame.screenstatus = 1;
 	}
 	
@@ -64,6 +73,8 @@ public class MainScreen implements Screen {
 		g.setColor(Color.white);
 		g.drawString("Game Start", 950, 500);
 		g.drawString("Quit", 1085, 600);
+		g.setFont(helpfont);
+		g.drawString("press s, w, enter to select", 825, 120);
 	}
 
 

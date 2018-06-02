@@ -21,6 +21,9 @@ public class KeyListener extends KeyAdapter {
 				else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 					ShootGame.MS.pressEnter();
 				}
+				break;
+			case 1:
+				
 		}
 	}
 }
