@@ -16,9 +16,11 @@ public class MainScreen implements Screen {
 
 	Image background;
 	Image arrow;
+	
 	Font titlefont= new Font("Arial", Font.BOLD, 70);
 	Font normalfont = new Font("Arial", Font.BOLD, 40);
 	Font helpfont = new Font("Arial", Font.PLAIN, 30);
+	
 	Sound changesound;
 	Sound entersound;
 	

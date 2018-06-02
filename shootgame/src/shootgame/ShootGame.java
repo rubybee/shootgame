@@ -32,7 +32,7 @@ public class ShootGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-		addKeyListener(new KeyListener());
+		addKeyListener(new KeyListener());		//keyboard input add
 		setFocusable(true);
 		
 	}
