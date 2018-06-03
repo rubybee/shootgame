@@ -59,7 +59,7 @@ public class MainScreen implements Screen {
 			}
 			System.exit(0);
 		}
-		else ShootGame.screenstatus = 1;
+		else ShootGame.mstoss();
 	}
 	
 	

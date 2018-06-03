@@ -4,6 +4,11 @@ import java.awt.Graphics2D;
 
 public class GameScreen extends Thread implements Screen{
 
+	int index;
+	
+	public GameScreen(int index) {
+	}
+	
 	@Override
 	public void screenDraw(Graphics2D g) {
 		// TODO Auto-generated method stub
