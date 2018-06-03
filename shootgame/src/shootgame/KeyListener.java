@@ -26,6 +26,23 @@ public class KeyListener extends KeyAdapter {
 				if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 					ShootGame.SS.pressESC();
 				}
+				break;
+			case 2:
+				if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					ShootGame.GS.pressESC();
+				}
+				break;
+			case 3:
+				if(e.getKeyCode() == KeyEvent.VK_W) {
+					ShootGame.PS.pressW();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_S) {
+					ShootGame.PS.pressS();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					ShootGame.PS.pressEnter();
+				}
+				break;
 		}
 	}
 }

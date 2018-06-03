@@ -27,6 +27,7 @@ public class Sound extends Thread{
 		} 
 	}
 	
+	
 	public void close() {
 		loop = false;
 		play.close();

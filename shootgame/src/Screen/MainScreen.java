@@ -78,6 +78,7 @@ public class MainScreen implements Screen {
 		g.setFont(helpfont);
 		g.drawString("press s, w, enter to select", 825, 120);
 	}
+	
 
 
 }

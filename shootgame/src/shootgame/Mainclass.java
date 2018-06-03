@@ -14,6 +14,15 @@ public class Mainclass {
 	
 	public static ArrayList<Image> background = new ArrayList<Image>();		//images of gamebackground
 	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	//images of wall
+	//images of zombie
+	public static final Image zombie1 = new ImageIcon(Mainclass.class.getResource("../image/zombie1.png")).getImage();	
+	public static final Image zombie2 = new ImageIcon(Mainclass.class.getResource("../image/zombie2.jpg")).getImage();
+	public static final Image zombie3 = new ImageIcon(Mainclass.class.getResource("../image/zombie3.jpg")).getImage();
+	public static final Image zombie4 = new ImageIcon(Mainclass.class.getResource("../image/zombie4.jpg")).getImage();
+	public static final Image zombie5 = new ImageIcon(Mainclass.class.getResource("../image/zombie5.jpg")).getImage();
+	public static final Image zombie6 = new ImageIcon(Mainclass.class.getResource("../image/zombie6.jpg")).getImage();
+	public static final Image zombie7 = new ImageIcon(Mainclass.class.getResource("../image/zombie7.jpg")).getImage();
+	public static final Image zombie8 = new ImageIcon(Mainclass.class.getResource("../image/zombie8.jpg")).getImage();
 	
 	public static void main(String[] args) {
 		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {

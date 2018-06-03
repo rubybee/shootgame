@@ -1,5 +1,7 @@
 package object;
 
-public class MovableEnemy extends Thread{
+import java.awt.Dimension;
 
+public class MovableEnemy extends Thread{
+	
 }

@@ -96,4 +96,18 @@ public class ShootGame extends JFrame {
 		screenstatus = 2;
 	}
 	
+	public static void gstoss() {
+		GS.close();
+		screenstatus = 1;
+	}
+	
+	public static void gstops() {
+		screenstatus = 3;
+	}
+	
+	public static void pstogs() {
+		screenstatus = 2;
+		GameScreen.pause = false;
+	}
+	
 }
