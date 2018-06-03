@@ -103,6 +103,7 @@ public class ShootGame extends JFrame {
 	public static void pstogs() {
 		screenstatus = 2;
 		GameScreen.pause = false;
+		GameScreen.turnonmusic();
 	}
 	
 	public static void pstoss() {
