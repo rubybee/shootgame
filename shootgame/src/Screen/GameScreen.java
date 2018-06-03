@@ -23,7 +23,7 @@ public class GameScreen extends Thread implements Screen{
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	ArrayList<Structure> structures = new ArrayList<Structure>();
 	
-	int index;
+	static int index;
 	
 	public static boolean pause;
 	

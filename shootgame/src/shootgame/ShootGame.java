@@ -96,11 +96,6 @@ public class ShootGame extends JFrame {
 		screenstatus = 2;
 	}
 	
-	public static void gstoss() {
-		GS.close();
-		screenstatus = 1;
-	}
-	
 	public static void gstops() {
 		screenstatus = 3;
 	}
@@ -108,6 +103,13 @@ public class ShootGame extends JFrame {
 	public static void pstogs() {
 		screenstatus = 2;
 		GameScreen.pause = false;
+	}
+	
+	public static void pstoss() {
+		GS.close();
+		introSound = new Sound("Free Fall.mp3", true);
+		introSound.start();
+		screenstatus = 1;
 	}
 	
 }

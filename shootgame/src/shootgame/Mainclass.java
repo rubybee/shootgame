@@ -13,6 +13,8 @@ public class Mainclass {
 	public static final int mapnumber = 16;		//number of maps
 	
 	public static ArrayList<Image> background = new ArrayList<Image>();		//images of gamebackground
+	public static ArrayList<Image> pausebackground = new ArrayList<Image>();		//images of gamebackground
+	
 	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	//images of wall
 	//images of zombie
 	public static final Image zombie1 = new ImageIcon(Mainclass.class.getResource("../image/zombie1.png")).getImage();	
@@ -25,10 +27,17 @@ public class Mainclass {
 	public static final Image zombie8 = new ImageIcon(Mainclass.class.getResource("../image/zombie8.jpg")).getImage();
 	
 	public static void main(String[] args) {
+		
 		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
 			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamebackground" + i + ".jpg")).getImage();
 			background.add(tmp);
 		}
+		
+		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
+			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamebackgroundforpause" + i + ".jpg")).getImage();
+			pausebackground.add(tmp);
+		}
+		
 		new ShootGame();
 	}
 
