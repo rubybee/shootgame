@@ -82,9 +82,11 @@ public class Normalzombie extends Enemy{
 				imagerightdim.width -= xsize;
 			}
 		}
-		//die motion plus
 		
 		//die motion plus
+		//die motion plus
+		//die motion plus
+		
 		delete = true;
 	}
 	
