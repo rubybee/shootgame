@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
+import Screen.GameScreen;
 import Screen.SelectScreen;
 
 public class MouseListener extends MouseAdapter{
@@ -17,8 +18,8 @@ public class MouseListener extends MouseAdapter{
 		int y = e.getY();
 		int tmpx;
 		int tmpy;
-		if (ShootGame.screenstatus == 0 || ShootGame.screenstatus == 2) return;
-		if (ShootGame.screenstatus == 1) {
+		if (ShootGame.screenstatus == 0 || ShootGame.screenstatus == 3) return;
+		else if (ShootGame.screenstatus == 1) {
 			for (int i = 0; i < Mainclass.mapnumber; i++) {
 				tmpx = SelectScreen.buttons.get(i).getx();
 				if (x < tmpx + 100 && x > tmpx) {
@@ -33,6 +34,11 @@ public class MouseListener extends MouseAdapter{
 				}
 			}
 		}
+		else if (ShootGame.screenstatus == 2) {
+			if(GameScreen.click) {
+				GameScreen.press(x, y);
+			}
+		}
 	}
 	
 	@Override
@@ -41,8 +47,8 @@ public class MouseListener extends MouseAdapter{
 		int y = e.getY();
 		int tmpx;
 		int tmpy;
-		if (ShootGame.screenstatus == 0 || ShootGame.screenstatus == 2) return;
-		if (ShootGame.screenstatus == 1) {
+		if (ShootGame.screenstatus == 0 || ShootGame.screenstatus == 3) return;
+		else if (ShootGame.screenstatus == 1) {
 			if(check == false) return;
 			else {
 				tmpx = SelectScreen.buttons.get(index).getx();
@@ -57,6 +63,11 @@ public class MouseListener extends MouseAdapter{
 				}
 			}
 		}
+		else if (ShootGame.screenstatus == 2) {
+			if(GameScreen.click) {
+				GameScreen.release();
+			}
+		}
 	}
-
+	
 }

@@ -14,8 +14,15 @@ public abstract class Enemy extends Thread{
 	int hp, pattern;
 	int xsize, ysize;
 	
+	
 	Image img;
 	
+	boolean die = false;
+	public boolean delete = false;
+	boolean attack;
+	
 	public abstract void screenDraw(Graphics2D g);
+	public abstract void close();
+	public abstract void attacked();
 
 }

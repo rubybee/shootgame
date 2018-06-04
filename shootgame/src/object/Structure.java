@@ -9,6 +9,8 @@ public abstract class Structure {
 	Dimension leftdim;
 	Dimension rightdim;
 	Image img;
+	
+	public boolean delete = false;
 
 	public abstract void screenDraw(Graphics2D g);
 }

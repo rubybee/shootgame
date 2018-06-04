@@ -7,15 +7,20 @@ import javax.swing.ImageIcon;
 
 public class Mainclass {
 	
+	public static final String title = "Shooting Game";		//title of game
+	
 	public static final int SCREEN_WIDTH = 1280;
 	public static final int SCREEN_HEIGHT = 720;
-	public static final String title = "Shooting Game";		//title of game
 	public static final int mapnumber = 16;		//number of maps
+	public static final int bulletsleeptime = 10;
+	public static final int bulletspeed = 5;
+	
 	
 	public static ArrayList<Image> background = new ArrayList<Image>();		//images of gamebackground
 	public static ArrayList<Image> pausebackground = new ArrayList<Image>();		//images of gamebackground
 	
 	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	//images of wall
+	
 	//images of zombie
 	public static final Image zombie1 = new ImageIcon(Mainclass.class.getResource("../image/zombie1.png")).getImage();	
 	public static final Image zombie2 = new ImageIcon(Mainclass.class.getResource("../image/zombie2.jpg")).getImage();
@@ -25,6 +30,9 @@ public class Mainclass {
 	public static final Image zombie6 = new ImageIcon(Mainclass.class.getResource("../image/zombie6.jpg")).getImage();
 	public static final Image zombie7 = new ImageIcon(Mainclass.class.getResource("../image/zombie7.jpg")).getImage();
 	public static final Image zombie8 = new ImageIcon(Mainclass.class.getResource("../image/zombie8.jpg")).getImage();
+	
+	//image of bullet
+	public static final Image bullet = new ImageIcon(Mainclass.class.getResource("../image/bullet.png")).getImage();
 	
 	public static void main(String[] args) {
 		

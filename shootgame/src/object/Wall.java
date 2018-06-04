@@ -7,6 +7,8 @@ import shootgame.Mainclass;
 
 public class Wall extends Structure{
 	
+	
+	
 	public Wall(int leftx, int lefty, int rightx, int righty){
 		leftdim = new Dimension(leftx,  lefty);
 		rightdim = new Dimension(rightx, righty);

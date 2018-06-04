@@ -26,8 +26,16 @@ public class Normalzombie extends Enemy{
 	
 	@Override
 	public void screenDraw(Graphics2D g) {
-		g.drawImage(img, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
+		if (!die) g.drawImage(img, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
+		else{
+			//die motion plus
+		}
 		
+		
+	}
+	
+	public void close() {
+		this.interrupt();
 	}
 	
 	@Override
@@ -35,6 +43,14 @@ public class Normalzombie extends Enemy{
 		while(hp == 1) {
 			for (int i = 0; i < pattern - 1; i++) {
 				if(imageleftdim.width == 240) break;
+				if (!attack) {
+					try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					attack = true;
+				}
 				do {
 					try {
 						Thread.sleep(300);
@@ -47,6 +63,14 @@ public class Normalzombie extends Enemy{
 				
 			}
 			for (int i = 0; i < pattern - 1; i++) {
+				if (!attack) {
+					try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					attack = true;
+				}
 				do {
 					try {
 						Thread.sleep(300);
@@ -57,11 +81,16 @@ public class Normalzombie extends Enemy{
 				imageleftdim.width -= xsize;
 				imagerightdim.width -= xsize;
 			}
-
-			
-			
 		}
+		//die motion plus
 		
+		//die motion plus
+		delete = true;
+	}
+	
+	public void attacked() {
+		hp--;
+		attack = false;
 	}
 
 }

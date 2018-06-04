@@ -108,6 +108,7 @@ public class ShootGame extends JFrame {
 	
 	public static void pstoss() {
 		GS.close();
+		GS = null;
 		introSound = new Sound("Free Fall.mp3", true);
 		introSound.start();
 		screenstatus = 1;

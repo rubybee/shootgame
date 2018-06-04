@@ -3,6 +3,7 @@ package Screen;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import object.Bomb;
 import object.Bullet;
 import object.Enemy;
 import object.MovableEnemy;
@@ -19,22 +20,37 @@ public class GameScreen extends Thread implements Screen{
 	static Sound bgm;
 	Sound pausesound;
 	
-	ArrayList<Enemy> enes = new ArrayList<Enemy>();
-	ArrayList<MovableEnemy> movenes = new ArrayList<MovableEnemy>();
-	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-	ArrayList<Bullet> firebullets = new ArrayList<Bullet>();
-	ArrayList<Structure> structures = new ArrayList<Structure>();
+	
+	public static boolean click;
+	
+	public static ArrayList<Enemy> enes;
+	public static ArrayList<MovableEnemy> movenes;
+	static ArrayList<Bullet> bullets;
+	static ArrayList<Bullet> firebullets;
+	public static ArrayList<Structure> structures;
+	static ArrayList<Bomb> bombs;
 	
 	static int index;
+	static int shootpointx;
+	static int shootpointy;
 	
+	public static boolean lockon;
 	public static boolean pause;
 	
 	public GameScreen(int index) {
+		lockon = false;
+		enes = new ArrayList<Enemy>();
+		movenes = new ArrayList<MovableEnemy>();
+		bullets = new ArrayList<Bullet>();
+		firebullets = new ArrayList<Bullet>();
+		structures = new ArrayList<Structure>();
+		bombs = new ArrayList<Bomb>();
 		pause = false;
 		bgm = new Sound("Ludovico Einaudi - Time Lapse - In A Time Lapse.mp3", true);
 		bgm.start();
-		this.index = index;
+		GameScreen.index = index;
 		mapsetting();
+		this.start();
 	}
 	
 	public static void turnonmusic() {
@@ -55,14 +71,62 @@ public class GameScreen extends Thread implements Screen{
 		g.drawImage(Mainclass.background.get(index/8), 0, 0, null);		//change background at 8th 16th 24th.... map
 		for (int i = 0; i < structures.size(); i++) structures.get(i).screenDraw(g);
 		for (int i = 0; i < enes.size(); i++) enes.get(i).screenDraw(g);
-		for (int i = 0; i < bullets.size(); i++) {
-			g.drawImage(bullets.get(i).getImage(), i * 60 + 10, 30, null);
-		}
+		for (int i = 0; i < bullets.size(); i++) g.drawImage(bullets.get(i).getImage(), i * 60 + 10, 30, null);
+		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).screenDraw(g);
+		for (int i = 0; i < movenes.size(); i++) movenes.get(i).screenDraw(g);
+		for (int i = 0; i < bombs.size(); i++) bombs.get(i).screenDraw(g);
+		if(lockon) g.drawOval(shootpointx, shootpointy, 30, 30);
 	}
 
 	public void close() {
 		bgm.close();
 		this.interrupt();
+		click = false;
+	}
+	
+	public static void press(int x, int y) {
+		shootpointx = x;
+		shootpointy = y;
+		lockon = true;
+	}
+	
+	public static void release() {
+		if(bullets.size() == 0) return;
+		else {
+			Bullet tmp = bullets.get(bullets.size() - 1);
+			bullets.remove(bullets.size() - 1);
+			if(tmp.gettype() == 0) {
+				firebullets.add(new Normalbullet(shootpointx, shootpointy));
+			}
+		}
+		lockon = false;
+		shootpointx = 0;
+		shootpointy = 0;
+	}
+	
+	
+	public void run() {
+		click = true;
+		while(true) {
+			System.out.println(firebullets.size());
+			for (int i = 0; i < structures.size(); i++) if(structures.get(i).delete) {
+				structures.remove(i);
+			}
+			for (int i = 0; i < enes.size(); i++) if(enes.get(i).delete) {
+				enes.get(i).close();
+				enes.remove(i);
+			}
+			for (int i = 0; i < movenes.size(); i++) if(movenes.get(i).delete) {
+				movenes.get(i).close();
+				movenes.remove(i);
+			}
+			for (int i = 0; i < firebullets.size(); i++) {
+				if(firebullets.get(i).bounce < 1) {
+					firebullets.get(i).close();
+					firebullets.remove(i);
+				}
+			}
+		}
 	}
 	
 	public void mapsetting() {
@@ -79,6 +143,8 @@ public class GameScreen extends Thread implements Screen{
 			enes.add(new Normalzombie(600, 400, 2));
 			enes.add(new Normalzombie(700, 400, 1));
 			enes.add(new Normalzombie(800, 400, 1));
+			bullets.add(new Normalbullet());
+			bullets.add(new Normalbullet());
 		}
 		
 		else if (index == 1) {
@@ -91,6 +157,10 @@ public class GameScreen extends Thread implements Screen{
 			
 		}
 	}
+
+	
+
+	
 
 	
 
