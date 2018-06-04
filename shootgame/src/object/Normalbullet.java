@@ -33,6 +33,7 @@ public class Normalbullet extends Bullet{
 		imagepos = new Dimension(0, 0);
 		size = new Dimension(20, 40);
 		//direction calculate need
+		//direction calculate need
 		shootbullet(500, 500, 5, 0);
 		//юс╫ц
 	}
