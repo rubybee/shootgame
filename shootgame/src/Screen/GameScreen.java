@@ -1,6 +1,8 @@
 package Screen;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import object.Bomb;
@@ -31,6 +33,8 @@ public class GameScreen extends Thread implements Screen{
 	static ArrayList<Bomb> bombs;
 	
 	static int index;
+	private static int curpointx;
+	private static int curpointy;
 	static int shootpointx;
 	static int shootpointy;
 	
@@ -40,6 +44,7 @@ public class GameScreen extends Thread implements Screen{
 	public boolean runnable;
 	
 	public GameScreen(int index) {
+		
 		runnable = true;
 		lockon = false;
 		enes = new ArrayList<Enemy>();
@@ -78,7 +83,10 @@ public class GameScreen extends Thread implements Screen{
 		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).screenDraw(g);
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).screenDraw(g);
 		for (int i = 0; i < bombs.size(); i++) bombs.get(i).screenDraw(g);
-		if(lockon) g.drawImage(Mainclass.target, shootpointx - 50, shootpointy - 50, null);
+		
+		//g.drawImage(Mainclass.target, curpointx - 50, curpointy-50, null);
+		
+		if(lockon) g.drawImage(Mainclass.target, curpointx - 50, curpointy - 50, null);
 	}
 
 	public void close() {
@@ -93,6 +101,11 @@ public class GameScreen extends Thread implements Screen{
 		structures = null;
 		runnable = false;
 		click = false;
+	}
+	
+	public static void where(int x, int y) {
+		curpointx = x;
+		curpointy = y;
 	}
 	
 	public static void press(int x, int y) {
@@ -181,11 +194,4 @@ public class GameScreen extends Thread implements Screen{
 		}
 	}
 
-	
-
-	
-
-	
-
-	
 }

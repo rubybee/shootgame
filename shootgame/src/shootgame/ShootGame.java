@@ -1,17 +1,10 @@
 package shootgame;
 
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.awt.event.MouseMotionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import Screen.GameScreen;
@@ -45,9 +38,9 @@ public class ShootGame extends JFrame {
 		setVisible(true);
 		setLayout(null);
 		
-		//input add
+		addMouseMotionListener(new shootgame.MouseMotionListener());
 		addMouseListener(new shootgame.MouseListener());
-		addKeyListener(new KeyListener());
+		addKeyListener(new shootgame.KeyListener());
 		setFocusable(true);
 		
 		
