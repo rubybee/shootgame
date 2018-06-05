@@ -12,7 +12,7 @@ public class Mainclass {
 	public static final int SCREEN_WIDTH = 1280;
 	public static final int SCREEN_HEIGHT = 720;
 	public static final int mapnumber = 16;		//number of maps
-	public static final int bulletsleeptime = 10;
+	public static final int bulletsleeptime = 50;
 	public static final int bulletspeed = 5;
 	
 	
@@ -33,6 +33,8 @@ public class Mainclass {
 	
 	//image of bullet
 	public static final Image bullet = new ImageIcon(Mainclass.class.getResource("../image/bullet.png")).getImage();
+	
+	public static final Image target = new ImageIcon(Mainclass.class.getResource("../image/target.png")).getImage();
 	
 	public static void main(String[] args) {
 		

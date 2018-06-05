@@ -37,7 +37,10 @@ public class GameScreen extends Thread implements Screen{
 	public static boolean lockon;
 	public static boolean pause;
 	
+	public boolean runnable;
+	
 	public GameScreen(int index) {
+		runnable = true;
 		lockon = false;
 		enes = new ArrayList<Enemy>();
 		movenes = new ArrayList<MovableEnemy>();
@@ -75,18 +78,27 @@ public class GameScreen extends Thread implements Screen{
 		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).screenDraw(g);
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).screenDraw(g);
 		for (int i = 0; i < bombs.size(); i++) bombs.get(i).screenDraw(g);
-		if(lockon) g.drawOval(shootpointx, shootpointy, 30, 30);
+		if(lockon) g.drawImage(Mainclass.target, shootpointx - 50, shootpointy - 50, null);
 	}
 
 	public void close() {
 		bgm.close();
-		this.interrupt();
+		for (int i = 0; i < enes.size(); i++) enes.get(i).close();
+		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).close();
+		for (int i = 0; i < movenes.size(); i++) movenes.get(i).close();
+		enes = null;
+		bullets = null;
+		firebullets = null;
+		movenes = null;
+		structures = null;
+		runnable = false;
 		click = false;
 	}
 	
 	public static void press(int x, int y) {
 		shootpointx = x;
 		shootpointy = y;
+		if(bullets.size() == 0) return;
 		lockon = true;
 	}
 	
@@ -108,18 +120,27 @@ public class GameScreen extends Thread implements Screen{
 	public void run() {
 		click = true;
 		while(true) {
-			System.out.println(firebullets.size());
 			for (int i = 0; i < structures.size(); i++) if(structures.get(i).delete) {
 				structures.remove(i);
 			}
+			
+			if(!runnable) return;
+			
 			for (int i = 0; i < enes.size(); i++) if(enes.get(i).delete) {
+				System.out.println(i);
 				enes.get(i).close();
 				enes.remove(i);
 			}
+			
+			if(!runnable) return;
+			
 			for (int i = 0; i < movenes.size(); i++) if(movenes.get(i).delete) {
 				movenes.get(i).close();
 				movenes.remove(i);
 			}
+			
+			if(!runnable) return;
+			
 			for (int i = 0; i < firebullets.size(); i++) {
 				if(firebullets.get(i).bounce < 1) {
 					firebullets.get(i).close();
@@ -130,6 +151,8 @@ public class GameScreen extends Thread implements Screen{
 	}
 	
 	public void mapsetting() {
+		System.out.println("Ack");
+		
 		//basic corner
 		structures.add(new Wall(0, 0, Mainclass.SCREEN_WIDTH, 60));
 		structures.add(new Wall(0, 0, 40, Mainclass.SCREEN_HEIGHT));

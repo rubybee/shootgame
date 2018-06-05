@@ -17,6 +17,8 @@ public abstract class Enemy extends Thread{
 	
 	Image img;
 	
+	public boolean runnable = true;
+	
 	boolean die = false;
 	public boolean delete = false;
 	boolean attack;

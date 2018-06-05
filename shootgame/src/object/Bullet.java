@@ -20,6 +20,7 @@ public abstract class Bullet extends Thread {
 	public int bounce;
 	
 	public boolean shoot;
+	public boolean runnable = true;
 	
 	public abstract void screenDraw(Graphics2D g);
 	public abstract Image getImage();

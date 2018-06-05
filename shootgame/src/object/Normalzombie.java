@@ -35,7 +35,7 @@ public class Normalzombie extends Enemy{
 	}
 	
 	public void close() {
-		this.interrupt();
+		runnable = false;
 	}
 	
 	@Override
@@ -60,8 +60,9 @@ public class Normalzombie extends Enemy{
 				}while(GameScreen.pause);
 				imageleftdim.width += xsize;
 				imagerightdim.width += xsize;
-				
+				if(hp == 0) break;
 			}
+			if(hp == 0) break;
 			for (int i = 0; i < pattern - 1; i++) {
 				if (!attack) {
 					try {
@@ -80,7 +81,9 @@ public class Normalzombie extends Enemy{
 				}while(GameScreen.pause);
 				imageleftdim.width -= xsize;
 				imagerightdim.width -= xsize;
+				if(hp == 0) break;
 			}
+			if(!runnable) return;
 		}
 		
 		//die motion plus
