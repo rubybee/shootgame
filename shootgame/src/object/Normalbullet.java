@@ -38,7 +38,7 @@ public class Normalbullet extends Bullet{
 		
 		//direction calculate need
 		//direction calculate need
-		shootbullet(startpos.width, startpos.height, (int)(tmpDirection.width/tmplong * speed + 0.5), (int)(tmpDirection.height/tmplong * speed + 0.5));
+		shootbullet(startpos.width, startpos.height, (int)(tmpDirection.width/tmplong * speed  + 0.5), (int)(tmpDirection.height/tmplong * speed + 0.5));
 		//юс╫ц
 	}
 
@@ -84,6 +84,7 @@ public class Normalbullet extends Bullet{
 			sleep();
 			if(!runnable) return;
 			
+			collisiontest();
 			imagepos.width += size.width;
 			pos.width += direction.width;
 			pos.height += direction.height;
@@ -93,7 +94,7 @@ public class Normalbullet extends Bullet{
 			sleep();
 			if(!runnable) return;
 			
-			collisiontest();
+			
 			imagepos.width -= size.width;
 			pos.width += direction.width;
 			pos.height += direction.height;
@@ -112,7 +113,7 @@ public class Normalbullet extends Bullet{
 			sleep();
 			if(!runnable) return;
 			
-			collisiontest();
+			
 			size = new Dimension(20, 40);
 			imagepos.width -= size.width;
 			pos.width += direction.width;

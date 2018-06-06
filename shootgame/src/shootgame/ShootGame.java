@@ -10,12 +10,14 @@ import javax.swing.JFrame;
 import Screen.GameScreen;
 import Screen.MainScreen;
 import Screen.PauseScreen;
+import Screen.ResultScreen;
 import Screen.SelectScreen;
 
 public class ShootGame extends JFrame {
 	public static MainScreen MS = new MainScreen();		//initialize screen
 	public static PauseScreen PS = new PauseScreen();
 	public static SelectScreen SS = new SelectScreen();
+	public static ResultScreen RS = new ResultScreen();
 	public static GameScreen GS;
 	
 	Graphics offg;
@@ -23,8 +25,8 @@ public class ShootGame extends JFrame {
 	
 	static Sound introSound;
 	
-	public static int screenstatus = 0;		//0 = main, 1 = select 2 = game 3 = Pause
-	
+	public static int screenstatus = 0;		//0 = main, 1 = select 2 = game 3 = Pause 4 = Result
+	public static int resulttype;
 	
 	public ShootGame() {
 		introSound = new Sound("Free Fall.mp3", true);
@@ -70,6 +72,9 @@ public class ShootGame extends JFrame {
 			case 3:
 				PS.screenDraw(g);
 				break;
+			case 4:
+				RS.settype(resulttype);
+				RS.screenDraw(g);
 		}
 		this.repaint();
 	}
@@ -93,6 +98,11 @@ public class ShootGame extends JFrame {
 		screenstatus = 3;
 	}
 	
+	public static void gstors(int type) {
+		resulttype = type;
+		screenstatus = 4;
+	}
+	
 	public static void pstogs() {
 		screenstatus = 2;
 		GameScreen.pause = false;
@@ -100,6 +110,14 @@ public class ShootGame extends JFrame {
 	}
 	
 	public static void pstoss() {
+		GS.close();
+		GS = null;
+		introSound = new Sound("Free Fall.mp3", true);
+		introSound.start();
+		screenstatus = 1;
+	}
+	
+	public static void rstoss() {
 		GS.close();
 		GS = null;
 		introSound = new Sound("Free Fall.mp3", true);

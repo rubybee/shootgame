@@ -11,6 +11,7 @@ import object.Enemy;
 import object.MovableEnemy;
 import object.Normalbullet;
 import object.Normalzombie;
+import object.Score;
 import object.Structure;
 import object.Wall;
 import shootgame.Mainclass;
@@ -25,6 +26,7 @@ public class GameScreen extends Thread implements Screen{
 	
 	public static boolean click;
 	
+	public Score [] scores = new Score[16];
 	public static ArrayList<Enemy> enes;
 	public static ArrayList<MovableEnemy> movenes;
 	static ArrayList<Bullet> bullets;
@@ -40,6 +42,8 @@ public class GameScreen extends Thread implements Screen{
 	
 	public static boolean lockon;
 	public static boolean pause;
+	public static boolean bulletempty;
+	public static boolean allkilled;
 	
 	public boolean runnable;
 	
@@ -47,6 +51,9 @@ public class GameScreen extends Thread implements Screen{
 		
 		runnable = true;
 		lockon = false;
+		bulletempty = false;
+		allkilled = false;
+		
 		enes = new ArrayList<Enemy>();
 		movenes = new ArrayList<MovableEnemy>();
 		bullets = new ArrayList<Bullet>();
@@ -57,6 +64,8 @@ public class GameScreen extends Thread implements Screen{
 		bgm = new Sound("Ludovico Einaudi - Time Lapse - In A Time Lapse.mp3", true);
 		bgm.start();
 		GameScreen.index = index;
+		scores[index] = new Score();
+		scores[index].setinitscore();
 		mapsetting();
 		this.start();
 	}
@@ -84,6 +93,8 @@ public class GameScreen extends Thread implements Screen{
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).screenDraw(g);
 		for (int i = 0; i < bombs.size(); i++) bombs.get(i).screenDraw(g);
 		
+		scores[index].screenDraw(g);
+		
 		//g.drawImage(Mainclass.target, curpointx - 50, curpointy-50, null);
 		
 		if(lockon) g.drawImage(Mainclass.target, curpointx - 50, curpointy - 50, null);
@@ -108,8 +119,9 @@ public class GameScreen extends Thread implements Screen{
 		curpointy = y;
 	}
 	
-	public static void press() {
-		
+	public static void press(int x, int y) {
+		curpointx = x;
+		curpointy = y;
 		if(bullets.size() == 0) return;
 		lockon = true;
 	}
@@ -121,6 +133,8 @@ public class GameScreen extends Thread implements Screen{
 		else {
 			Bullet tmp = bullets.get(bullets.size() - 1);
 			bullets.remove(bullets.size() - 1);
+			if(bullets.size() == 0)
+				bulletempty = true;
 			if(tmp.gettype() == 0) {
 				firebullets.add(new Normalbullet(shootpointx, shootpointy));
 			}
@@ -131,6 +145,7 @@ public class GameScreen extends Thread implements Screen{
 	
 	public void run() {
 		click = true;
+		
 		while(true) {
 			for (int i = 0; i < structures.size(); i++) if(structures.get(i).delete) {
 				structures.remove(i);
@@ -142,6 +157,26 @@ public class GameScreen extends Thread implements Screen{
 				System.out.println(i);
 				enes.get(i).close();
 				enes.remove(i);
+				scores[index].plusScore();
+				if(enes.size() == 0) {
+					for(int j = 0; j < bullets.size(); j++) {
+						try {
+							sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						scores[index].plusbBulletScore();
+					}
+					try {
+						sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					ShootGame.gstors(1);
+				}
+					
 			}
 			
 			if(!runnable) return;
@@ -157,6 +192,16 @@ public class GameScreen extends Thread implements Screen{
 				if(firebullets.get(i).bounce < 1) {
 					firebullets.get(i).close();
 					firebullets.remove(i);
+					if(bulletempty && firebullets.size() == 0) {
+							try {
+								sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							ShootGame.gstors(2);
+							//type 2
+					}
 				}
 			}
 		}
@@ -173,6 +218,7 @@ public class GameScreen extends Thread implements Screen{
 		//basic corner
 		
 		if(index == 0) {
+			structures.add(new Wall(300, 300, 800, 330));
 			enes.add(new Normalzombie(400, 400, 0));	//just test
 			enes.add(new Normalzombie(500, 400, 1));
 			enes.add(new Normalzombie(600, 400, 2));
@@ -180,9 +226,12 @@ public class GameScreen extends Thread implements Screen{
 			enes.add(new Normalzombie(800, 400, 1));
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
+
+			
 		}
 		
 		else if (index == 1) {
+			enes.add(new Normalzombie(400, 400, 0));
 			bullets.add(new Normalbullet());	//just test
 			bullets.add(new Normalbullet());
 		}
