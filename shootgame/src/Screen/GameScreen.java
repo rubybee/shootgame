@@ -108,14 +108,15 @@ public class GameScreen extends Thread implements Screen{
 		curpointy = y;
 	}
 	
-	public static void press(int x, int y) {
-		shootpointx = x;
-		shootpointy = y;
+	public static void press() {
+		
 		if(bullets.size() == 0) return;
 		lockon = true;
 	}
 	
-	public static void release() {
+	public static void release(int x, int y) {
+		shootpointx = x;
+		shootpointy = y;
 		if(bullets.size() == 0) return;
 		else {
 			Bullet tmp = bullets.get(bullets.size() - 1);
@@ -125,8 +126,6 @@ public class GameScreen extends Thread implements Screen{
 			}
 		}
 		lockon = false;
-		shootpointx = 0;
-		shootpointy = 0;
 	}
 	
 	

@@ -14,8 +14,6 @@ public class Normalbullet extends Bullet{
 	
 	int tmpx1, tmpx2, tmpy1, tmpy2;
 	
-	
-	
 	public Normalbullet() {
 		shoot = false;
 		bullet = Mainclass.bullet;
@@ -32,9 +30,15 @@ public class Normalbullet extends Bullet{
 		visuableimage = new ImageIcon(Mainclass.class.getResource("../image/visuablenormalbullet.png")).getImage();
 		imagepos = new Dimension(0, 0);
 		size = new Dimension(20, 40);
+		
+		Dimension startpos = new Dimension(100, 600);
+		Dimension tmpDirection = new Dimension(x-startpos.width, y-startpos.height);
+		double tmplong = Math.sqrt(Math.pow(x-startpos.width, 2) + Math.pow(y-startpos.height, 2));
+		double speed = 15;
+		
 		//direction calculate need
 		//direction calculate need
-		shootbullet(500, 500, 15, 0);
+		shootbullet(startpos.width, startpos.height, (int)(tmpDirection.width/tmplong * speed + 0.5), (int)(tmpDirection.height/tmplong * speed + 0.5));
 		//юс╫ц
 	}
 

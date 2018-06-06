@@ -36,7 +36,7 @@ public class MouseListener extends MouseAdapter{
 		}
 		else if (ShootGame.screenstatus == 2) {
 			if(GameScreen.click) {
-				GameScreen.press(x, y);
+				GameScreen.press();
 			}
 		}
 	}
@@ -65,7 +65,7 @@ public class MouseListener extends MouseAdapter{
 		}
 		else if (ShootGame.screenstatus == 2) {
 			if(GameScreen.click) {
-				GameScreen.release();
+				GameScreen.release(x, y);
 			}
 		}
 	}
