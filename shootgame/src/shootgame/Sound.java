@@ -3,10 +3,9 @@ package shootgame;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
 
 import javazoom.jl.player.Player;
+
 
 public class Sound extends Thread{
 	private Player play;
