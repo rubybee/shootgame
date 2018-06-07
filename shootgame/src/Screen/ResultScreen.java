@@ -51,11 +51,11 @@ public class ResultScreen implements Screen{
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	
 		if(type == 1) {
-			g.drawImage(clear, 460, 90, null);
+			g.drawImage(clear, 450, 110, null);
 			g.setFont(smallfont);
-			g.setColor(Color.white);
-			g.drawString("Level Cleared", 540, 230);
-			g.drawString(Integer.toString(GameScreen.scores[GameScreen.index].getscore()), 595, 280);
+			g.setColor(Color.yellow);
+			g.drawString("Level Cleared", 540, 250);
+			g.drawString(Integer.toString(GameScreen.scores[GameScreen.index].getscore()), 595, 300);
 		}
 		else if(type == 2) {
 			g.drawImage(fail, 440, 110, null);
@@ -69,6 +69,7 @@ public class ResultScreen implements Screen{
 		g.setColor(quitcolor);
 		g.drawString("quit", 600, 560);
 		g.setColor(Color.black);
+		g.drawString("use also w, s", 515, 650);
 	}
 	
 	public void settype(int type) {

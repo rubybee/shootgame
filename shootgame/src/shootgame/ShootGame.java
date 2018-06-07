@@ -106,6 +106,7 @@ public class ShootGame extends JFrame {
 	public static void gstors(int type) {
 		resulttype = type;
 		screenstatus = 4;
+		
 		GS.close();
 		GS = null;
 		

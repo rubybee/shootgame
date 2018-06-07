@@ -3,16 +3,18 @@ package object;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
 import Screen.GameScreen;
 import shootgame.Mainclass;
+import shootgame.Sound;
 
 public class Normalbullet extends Bullet{
 	
 	int tmpx1, tmpx2, tmpy1, tmpy2;
+	private Sound wallsound;
+	private Sound hitsound;
 	
 	public Normalbullet() {
 		shoot = false;
@@ -144,21 +146,25 @@ public class Normalbullet extends Bullet{
 			if(pos.width < tmpx2 && pos.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				direction.width = -(direction.width);
 				bounce--;
+				wallsound();
 				return;
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				direction.width = -(direction.width);
 				bounce--;
+				wallsound();
 				return;
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
 				direction.height = -(direction.height);
 				bounce--;
+				wallsound();
 				return;
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 ) {
 				direction.height = -(direction.height);
 				bounce--;
+				wallsound();
 				return;
 			}
 		}
@@ -171,6 +177,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -178,6 +185,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -185,6 +193,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -192,6 +201,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -205,6 +215,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -212,6 +223,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -219,6 +231,7 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
@@ -226,10 +239,21 @@ public class Normalbullet extends Bullet{
 				if (tmp.attack) {
 					tmp.attacked();
 					bounce--;
+					hitsound();
 					return;
 				}
 			}
 		}
+	}
+	
+	private void wallsound() {
+		wallsound = new Sound("wall_collision.mp3", false);
+		wallsound.start();
+	}
+	
+	private void hitsound() {
+		hitsound = new Sound("zombiehit.mp3", false);
+		hitsound.start();
 	}
 	
 	public void setcenter() {

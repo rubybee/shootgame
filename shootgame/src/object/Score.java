@@ -42,7 +42,7 @@ public class Score implements Screen{
 		
 		g.setFont(smallfont);
 		g.setColor(Color.white);
-		g.drawString(Integer.toString(score), 600, 80);
+		g.drawString(Integer.toString(score), 600, 100);
 		
 	}
 	
