@@ -3,11 +3,13 @@ package shootgame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
 import Screen.GameScreen;
+import Screen.GamestartScreen;
 import Screen.MainScreen;
 import Screen.PauseScreen;
 import Screen.ResultScreen;
@@ -18,7 +20,9 @@ public class ShootGame extends JFrame {
 	public static PauseScreen PS = new PauseScreen();
 	public static SelectScreen SS = new SelectScreen();
 	public static ResultScreen RS = new ResultScreen();
+	public static GamestartScreen GSS = new GamestartScreen();
 	public static GameScreen GS;
+	
 	
 	Graphics offg;
 	Image offscreen;
@@ -47,6 +51,8 @@ public class ShootGame extends JFrame {
 		
 		
 	}
+	
+	
 
 	@Override
 	public void paint(Graphics g) {
@@ -75,6 +81,9 @@ public class ShootGame extends JFrame {
 			case 4:
 				RS.settype(resulttype);
 				RS.screenDraw(g);
+				break;
+			case 5:
+				GSS.screenDraw(g);
 		}
 		this.repaint();
 	}
@@ -91,12 +100,30 @@ public class ShootGame extends JFrame {
 	public static void sstogs(int index) {
 		GS = new GameScreen(index);
 		introSound.close();
-		screenstatus = 2;
+		screenstatus = 5;
+		Timer startgame = new Timer();
+		TimerTask showstart = new TimerTask() {
+			@Override
+			public void run() {
+				screenstatus = 2;
+			}
+		};
+		startgame.schedule(showstart, 2000);
+		
+		//screenstatus = 2;
 	}
 	
 	public static void rstogs(int index) {
 		GS = new GameScreen(index);
-		screenstatus = 2;
+		screenstatus = 5;
+		Timer startgame = new Timer();
+		TimerTask showstart = new TimerTask() {
+			@Override
+			public void run() {
+				screenstatus = 2;
+			}
+		};
+		startgame.schedule(showstart, 2000);
 	}
 	
 	public static void gstops() {
