@@ -94,6 +94,11 @@ public class ShootGame extends JFrame {
 		screenstatus = 2;
 	}
 	
+	public static void rstogs(int index) {
+		GS = new GameScreen(index);
+		screenstatus = 2;
+	}
+	
 	public static void gstops() {
 		screenstatus = 3;
 	}
@@ -102,6 +107,7 @@ public class ShootGame extends JFrame {
 		resulttype = type;
 		screenstatus = 4;
 		GS.close();
+		GS = null;
 		
 	}
 	

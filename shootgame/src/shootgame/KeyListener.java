@@ -43,6 +43,16 @@ public class KeyListener extends KeyAdapter {
 					ShootGame.PS.pressEnter();
 				}
 				break;
+			case 4:
+				if(e.getKeyCode() == KeyEvent.VK_W) {
+					ShootGame.RS.pressW();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_S) {
+					ShootGame.RS.pressS();
+				}
+				else if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					ShootGame.RS.pressEnter();
+				}
 		}
 	}
 }

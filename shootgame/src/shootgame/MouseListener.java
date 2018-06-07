@@ -9,7 +9,7 @@ import Screen.SelectScreen;
 
 public class MouseListener extends MouseAdapter{
 	Sound entermusic;
-	int index;
+	public static int index;
 	boolean check = false;
 	
 	@Override
