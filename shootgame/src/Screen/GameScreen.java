@@ -1,5 +1,7 @@
 package Screen;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -22,6 +24,9 @@ public class GameScreen extends Thread implements Screen{
 	
 	static Sound bgm;
 	Sound pausesound;
+	Sound scoresound;
+	
+	Font smallfont = new Font("Arial", Font.ITALIC, 20);
 	
 	
 	public static boolean click;
@@ -39,6 +44,7 @@ public class GameScreen extends Thread implements Screen{
 	private static int curpointy;
 	static int shootpointx;
 	static int shootpointy;
+	private int scorenum;
 	
 	public static boolean lockon;
 	public static boolean pause;
@@ -86,12 +92,16 @@ public class GameScreen extends Thread implements Screen{
 	@Override
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(Mainclass.background.get(index/8), 0, 0, null);		//change background at 8th 16th 24th.... map
+		g.setFont(smallfont);
+		g.setColor(Color.yellow);
 		for (int i = 0; i < structures.size(); i++) structures.get(i).screenDraw(g);
 		for (int i = 0; i < enes.size(); i++) enes.get(i).screenDraw(g);
 		for (int i = 0; i < bullets.size(); i++) g.drawImage(bullets.get(i).getImage(), i * 60 + 10, 30, null);
+		for (int i = 0; i < scorenum; i++) g.drawString("3000", i * 60 + 15, 100);
 		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).screenDraw(g);
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).screenDraw(g);
 		for (int i = 0; i < bombs.size(); i++) bombs.get(i).screenDraw(g);
+		
 		
 		scores[index].screenDraw(g);
 		
@@ -131,13 +141,16 @@ public class GameScreen extends Thread implements Screen{
 		shootpointy = y;
 		if(bullets.size() == 0) return;
 		else {
-			Bullet tmp = bullets.get(bullets.size() - 1);
-			bullets.remove(bullets.size() - 1);
-			if(bullets.size() == 0)
-				bulletempty = true;
-			if(tmp.gettype() == 0) {
-				firebullets.add(new Normalbullet(shootpointx, shootpointy));
+			if(!allkilled) {
+				Bullet tmp = bullets.get(bullets.size() - 1);
+				bullets.remove(bullets.size() - 1);
+				if(bullets.size() == 0)
+					bulletempty = true;
+				if(tmp.gettype() == 0) {
+					firebullets.add(new Normalbullet(shootpointx, shootpointy));
+				}
 			}
+			
 		}
 		lockon = false;
 	}
@@ -158,15 +171,30 @@ public class GameScreen extends Thread implements Screen{
 				enes.get(i).close();
 				enes.remove(i);
 				scores[index].plusScore();
-				if(enes.size() == 0) {
+				if(enes.size() == 0)
+					allkilled = true;
+				if(allkilled) {
 					for(int j = 0; j < bullets.size(); j++) {
-						try {
-							sleep(1500);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+						if(j == 0) {
+							try {
+								sleep(1500);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
+						else {
+							try {
+								sleep(800);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						scorenum = j+1;
 						scores[index].plusbBulletScore();
+						scoresound = new Sound("showscore.mp3", false);
+						scoresound.start();
 					}
 					try {
 						sleep(1500);
@@ -224,6 +252,8 @@ public class GameScreen extends Thread implements Screen{
 			enes.add(new Normalzombie(600, 400, 2));
 			enes.add(new Normalzombie(700, 400, 1));
 			enes.add(new Normalzombie(800, 400, 1));
+			bullets.add(new Normalbullet());
+			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 
