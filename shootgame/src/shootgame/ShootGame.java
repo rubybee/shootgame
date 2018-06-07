@@ -101,6 +101,8 @@ public class ShootGame extends JFrame {
 	public static void gstors(int type) {
 		resulttype = type;
 		screenstatus = 4;
+		GS.close();
+		
 	}
 	
 	public static void pstogs() {
@@ -118,8 +120,6 @@ public class ShootGame extends JFrame {
 	}
 	
 	public static void rstoss() {
-		GS.close();
-		GS = null;
 		introSound = new Sound("Free Fall.mp3", true);
 		introSound.start();
 		screenstatus = 1;

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+import object.Score;
+
 public class Mainclass {
 	
 	public static final String title = "Shooting Game";		//title of game
@@ -14,7 +16,6 @@ public class Mainclass {
 	public static final int mapnumber = 16;		//number of maps
 	public static final int bulletsleeptime = 50;
 	public static final int bulletspeed = 5;
-	
 	
 	public static ArrayList<Image> background = new ArrayList<Image>();		//images of gamebackground
 	public static ArrayList<Image> pausebackground = new ArrayList<Image>();		//images of gamebackground
