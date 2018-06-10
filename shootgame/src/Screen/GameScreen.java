@@ -37,7 +37,7 @@ public class GameScreen extends Thread implements Screen{
 	static ArrayList<Bullet> bullets;
 	static ArrayList<Bullet> firebullets;
 	public static ArrayList<Structure> structures;
-	static ArrayList<Bomb> bombs;
+	public static ArrayList<Bomb> bombs;
 	
 	static int index;
 	private static int curpointx;
