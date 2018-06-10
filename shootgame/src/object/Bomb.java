@@ -6,13 +6,20 @@ public class Bomb extends Thread{
 	
 	int x, y = 0;
 	
-	public void Bomb(int x, int y){
-		
+	public Bomb(int tmpx1, int tmpy1) {
+		// TODO Auto-generated constructor stub
 	}
+
 	
 	public void screenDraw(Graphics2D g) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		super.run();
 	}
 
 }

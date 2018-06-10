@@ -175,6 +175,7 @@ public class Normalbullet extends Bullet{
 			tmpy1 = tmp.leftdim.height; tmpy2 = tmp.rightdim.height;
 			if(pos.width < tmpx2 && pos.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -183,6 +184,7 @@ public class Normalbullet extends Bullet{
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -191,6 +193,7 @@ public class Normalbullet extends Bullet{
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -199,6 +202,7 @@ public class Normalbullet extends Bullet{
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 )  {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -213,6 +217,7 @@ public class Normalbullet extends Bullet{
 			tmpy1 = tmp.leftdim.height; tmpy2 = tmp.rightdim.height;
 			if(pos.width < tmpx2 && pos.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -221,6 +226,7 @@ public class Normalbullet extends Bullet{
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -229,6 +235,7 @@ public class Normalbullet extends Bullet{
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
@@ -237,6 +244,7 @@ public class Normalbullet extends Bullet{
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 ) {
 				if (tmp.attack) {
+					GameScreen.bombs.add(new Bomb(tmpx1, tmpy1));
 					tmp.attacked();
 					bounce--;
 					hitsound();
