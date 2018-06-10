@@ -20,15 +20,16 @@ public class Normalzombie extends Enemy{
 		hp = 1;
 		pattern = 4;
 		
-		img = Mainclass.zombie1;
+		idleimg = Mainclass.zombie1;
+		dieimg = Mainclass.zombiedie1;
 		this.start();
 	}
 	
 	@Override
 	public void screenDraw(Graphics2D g) {
-		if (!die) g.drawImage(img, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
+		if (!die) g.drawImage(idleimg, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
 		else{
-			//die motion plus
+			g.drawImage(dieimg, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
 		}
 		
 		
@@ -53,7 +54,7 @@ public class Normalzombie extends Enemy{
 				}
 				do {
 					try {
-						Thread.sleep(300);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -74,7 +75,7 @@ public class Normalzombie extends Enemy{
 				}
 				do {
 					try {
-						Thread.sleep(300);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -85,10 +86,134 @@ public class Normalzombie extends Enemy{
 			}
 			if(!runnable) return;
 		}
+		//die motion
 		
-		//die motion plus
-		//die motion plus
-		//die motion plus
+		die = true;
+		imageleftdim.width = 0;
+		imageleftdim.height = 0;
+		imagerightdim.width = 60;
+		imagerightdim.height = 120;
+		rightdim.width -= 20;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		rightdim.width += 14;
+		imageleftdim.width += 60;
+		imagerightdim.width += 74;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		rightdim.width += 16;
+		imageleftdim.width += 74;
+		imagerightdim.width += 90;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		rightdim.width += 20;
+		imageleftdim.width += 90;
+		imagerightdim.width += 110;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		rightdim.width += 20;
+		imageleftdim.width += 115;
+		imagerightdim.width += 135;
+		
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		imageleftdim.width = 0;
+		imageleftdim.height = 120;
+		imagerightdim.width = 130;
+		imagerightdim.height = 180;
+		rightdim.width += 10;
+		leftdim.height += 60;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		rightdim.width += 20;
+		imageleftdim.width += 130;
+		imagerightdim.width += 150;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		rightdim.width += 10;
+		imageleftdim.width += 150;
+		imagerightdim.width += 160;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		imageleftdim.width = 0;
+		imageleftdim.height = 0;
+		imagerightdim.width = 136;
+		imagerightdim.height = 60;
+		dieimg = Mainclass.zombiedie11;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
+		
+		dieimg = Mainclass.zombiedie12;
+		
+		do {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(GameScreen.pause);
 		
 		delete = true;
 	}

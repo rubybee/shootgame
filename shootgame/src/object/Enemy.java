@@ -15,7 +15,8 @@ public abstract class Enemy extends Thread{
 	int xsize, ysize;
 	
 	
-	Image img;
+	Image idleimg;
+	Image dieimg;
 	
 	public boolean runnable = true;
 	

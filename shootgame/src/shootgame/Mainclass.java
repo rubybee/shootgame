@@ -32,6 +32,11 @@ public class Mainclass {
 	public static final Image zombie7 = new ImageIcon(Mainclass.class.getResource("../image/zombie7.jpg")).getImage();
 	public static final Image zombie8 = new ImageIcon(Mainclass.class.getResource("../image/zombie8.jpg")).getImage();
 	
+	//images of diezombie
+	public static final Image zombiedie1 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie1.png")).getImage();
+	public static final Image zombiedie11 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie2.png")).getImage();
+	public static final Image zombiedie12 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie3.png")).getImage();
+	
 	//image of bullet
 	public static final Image bullet = new ImageIcon(Mainclass.class.getResource("../image/bullet.png")).getImage();
 	
