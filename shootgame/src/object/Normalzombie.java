@@ -51,7 +51,9 @@ public class Normalzombie extends Enemy{
 						e.printStackTrace();
 					}
 					attack = true;
+					
 				}
+				if(!runnable) return;
 				do {
 					try {
 						Thread.sleep(100);
@@ -59,6 +61,7 @@ public class Normalzombie extends Enemy{
 						e.printStackTrace();
 					}
 				}while(GameScreen.pause);
+				
 				imageleftdim.width += xsize;
 				imagerightdim.width += xsize;
 				if(hp == 0) break;
@@ -89,6 +92,7 @@ public class Normalzombie extends Enemy{
 		//die motion
 		
 		die = true;
+		GameScreen.scores[GameScreen.index].plusScore();
 		imageleftdim.width = 0;
 		imageleftdim.height = 0;
 		imagerightdim.width = 60;

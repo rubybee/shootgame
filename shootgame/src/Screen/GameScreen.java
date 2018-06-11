@@ -39,7 +39,7 @@ public class GameScreen extends Thread implements Screen{
 	public static ArrayList<Structure> structures;
 	public static ArrayList<Bomb> bombs;
 	
-	static int index;
+	public static int index;
 	private static int curpointx;
 	private static int curpointy;
 	static int shootpointx;
@@ -115,11 +115,7 @@ public class GameScreen extends Thread implements Screen{
 		for (int i = 0; i < enes.size(); i++) enes.get(i).close();
 		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).close();
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).close();
-		enes = null;
-		bullets = null;
-		firebullets = null;
-		movenes = null;
-		structures = null;
+		
 		runnable = false;
 		click = false;
 	}
@@ -170,7 +166,6 @@ public class GameScreen extends Thread implements Screen{
 				System.out.println(i);
 				enes.get(i).close();
 				enes.remove(i);
-				scores[index].plusScore();
 				if(enes.size() == 0)
 					allkilled = true;
 				if(allkilled) {
@@ -178,6 +173,7 @@ public class GameScreen extends Thread implements Screen{
 						if(j == 0) {
 							try {
 								sleep(1500);
+								sleep();
 							} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -186,11 +182,13 @@ public class GameScreen extends Thread implements Screen{
 						else {
 							try {
 								sleep(800);
+								sleep();
 							} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
+						sleep();
 						scorenum = j+1;
 						scores[index].plusbBulletScore();
 						scoresound = new Sound("showscore.mp3", false);
@@ -202,7 +200,9 @@ public class GameScreen extends Thread implements Screen{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					sleep();
 					ShootGame.gstors(1);
+					
 				}
 					
 			}
@@ -233,6 +233,16 @@ public class GameScreen extends Thread implements Screen{
 				}
 			}
 		}
+	}
+	
+	public void sleep() {
+		do {
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}while(pause);
 	}
 	
 	public void mapsetting() {
