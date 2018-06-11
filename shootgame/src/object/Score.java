@@ -8,14 +8,13 @@ import java.awt.RenderingHints;
 import Screen.Screen;
 
 public class Score implements Screen{
-	private int highscore;
+	private static int [] highscores = new int[16];
 	private int score;
 	
 	Font normalfont = new Font("Arial", Font.BOLD, 40);
 	Font smallfont = new Font("Arial", Font.ITALIC, 30);
 	
 	public Score() {
-		highscore = 0;
 		score = 0;
 		
 	}
@@ -24,9 +23,9 @@ public class Score implements Screen{
 		score += 1000;
 	}
 	
-	public void sethighscore() {
-		if(highscore < score)
-			highscore = score;
+	public void sethighscore(int index) {
+		if(highscores[index] < score)
+			highscores[index] = score;
 	}
 	
 	public void plusbBulletScore() {
@@ -48,5 +47,9 @@ public class Score implements Screen{
 	
 	public int getscore() {
 		return score;
+	}
+	
+	public int gethighscore(int index) {
+		return highscores[index];
 	}
 }

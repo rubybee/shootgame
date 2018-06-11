@@ -18,6 +18,8 @@ public class GamestartScreen implements Screen{
 	Image background;
 	
 	Font normalfont = new Font("Arial", Font.BOLD, 70);
+	Font normalfont2 = new Font("Arial", Font.BOLD, 50);
+	Font smallfont = new Font("Arial", Font.ITALIC, 50);
 	
 
 	public GamestartScreen() {
@@ -30,6 +32,11 @@ public class GamestartScreen implements Screen{
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setFont(normalfont);
 		g.setColor(Color.white);
-		g.drawString("Level " + Integer.toString(GameScreen.index + 1), 550, 200);
+		g.drawString("Level " + Integer.toString(GameScreen.index + 1), 530, 200);
+		g.setFont(normalfont2);
+		g.setColor(Color.red);
+		g.drawString("High score : ", 430, 350);
+		g.setFont(smallfont);
+		g.drawString(Integer.toString(GameScreen.scores[GameScreen.index].gethighscore(GameScreen.index)), 750, 350);
 	}
 }

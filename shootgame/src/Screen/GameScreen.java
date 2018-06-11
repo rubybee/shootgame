@@ -32,6 +32,7 @@ public class GameScreen extends Thread implements Screen{
 	public static boolean click;
 	
 	public static Score [] scores = new Score[16];
+	
 	public static ArrayList<Enemy> enes;
 	public static ArrayList<MovableEnemy> movenes;
 	static ArrayList<Bullet> bullets;
@@ -201,6 +202,7 @@ public class GameScreen extends Thread implements Screen{
 						e.printStackTrace();
 					}
 					sleep();
+					scores[index].sethighscore(index);
 					ShootGame.gstors(1);
 					
 				}
