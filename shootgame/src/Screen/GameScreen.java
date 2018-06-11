@@ -96,6 +96,7 @@ public class GameScreen extends Thread implements Screen{
 		g.setFont(smallfont);
 		g.setColor(Color.yellow);
 		for (int i = 0; i < structures.size(); i++) structures.get(i).screenDraw(g);
+		
 		for (int i = 0; i < enes.size(); i++) enes.get(i).screenDraw(g);
 		for (int i = 0; i < bullets.size(); i++) g.drawImage(bullets.get(i).getImage(), i * 60 + 10, 30, null);
 		for (int i = 0; i < scorenum; i++) g.drawString("3000", i * 60 + 15, 100);
@@ -157,6 +158,23 @@ public class GameScreen extends Thread implements Screen{
 		click = true;
 		
 		while(true) {
+			for (int i = 0; i < firebullets.size(); i++) {
+				if(firebullets.get(i).bounce < 1) {
+					firebullets.get(i).close();
+					firebullets.remove(i);
+					if(bulletempty && firebullets.size() == 0) {
+							try {
+								sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							ShootGame.gstors(2);
+							//type 2
+					}
+				}
+			}
+			
 			for (int i = 0; i < structures.size(); i++) if(structures.get(i).delete) {
 				structures.remove(i);
 			}
@@ -218,22 +236,6 @@ public class GameScreen extends Thread implements Screen{
 			
 			if(!runnable) return;
 			
-			for (int i = 0; i < firebullets.size(); i++) {
-				if(firebullets.get(i).bounce < 1) {
-					firebullets.get(i).close();
-					firebullets.remove(i);
-					if(bulletempty && firebullets.size() == 0) {
-							try {
-								sleep(1000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							ShootGame.gstors(2);
-							//type 2
-					}
-				}
-			}
 		}
 	}
 	

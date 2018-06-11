@@ -34,9 +34,9 @@ public class Normalbullet extends Bullet{
 		size = new Dimension(20, 40);
 		
 		Dimension startpos = new Dimension(100, 600);
-		Dimension tmpDirection = new Dimension(x-startpos.width, y-startpos.height);
+		Dimension tmpDirection = new Dimension(x-startpos.width - 12, y-startpos.height - 22);
 		double tmplong = Math.sqrt(Math.pow(x-startpos.width, 2) + Math.pow(y-startpos.height, 2));
-		double speed = 15;
+		double speed = 16;
 		
 		//direction calculate need
 		//direction calculate need
@@ -64,32 +64,28 @@ public class Normalbullet extends Bullet{
 			sleep();
 			if(!runnable) return;
 			
-			collisiontest();
+			
+			directPlus();
 			size = new Dimension(30, 40);
 			imagepos.width += size.width;
-			pos.width += direction.width;
-			pos.height += direction.height;
 			setcenter();
 			if(bounce == 0) break;
 
 			sleep();
 			if(!runnable) return;
 			
-			collisiontest();
+			
+			directPlus();
 			size = new Dimension(30, 40);
 			imagepos.width += size.width;
-			pos.width += direction.width;
-			pos.height += direction.height;
 			setcenter();
 			if(bounce == 0) break;
 			
 			sleep();
 			if(!runnable) return;
 			
-			collisiontest();
+			directPlus();
 			imagepos.width += size.width;
-			pos.width += direction.width;
-			pos.height += direction.height;
 			setcenter();
 			if(bounce == 0) break;
 			
@@ -97,29 +93,25 @@ public class Normalbullet extends Bullet{
 			if(!runnable) return;
 			
 			
+			directPlus();
 			imagepos.width -= size.width;
-			pos.width += direction.width;
-			pos.height += direction.height;
 			setcenter();
 			
 			sleep();
 			if(!runnable) return;
 			
-			collisiontest();
+			directPlus();
 			size = new Dimension(40, 40);
 			imagepos.width -= size.width;
-			pos.width += direction.width;
-			pos.height += direction.height;
 			setcenter();
 			
 			sleep();
 			if(!runnable) return;
 			
 			
+			directPlus();
 			size = new Dimension(20, 40);
 			imagepos.width -= size.width;
-			pos.width += direction.width;
-			pos.height += direction.height;
 			setcenter();
 		}
 	}
@@ -138,7 +130,7 @@ public class Normalbullet extends Bullet{
 		runnable = false;
 	}
 	
-	public void collisiontest() {
+	public boolean collisiontest() {
 		for (int i = 0; i < GameScreen.structures.size(); i++) {			//수직 수평이 확실하지않은 오브젝트 추가시 수정이 필요
 			Structure tmp = GameScreen.structures.get(i);
 			tmpx1 = tmp.leftdim.width; tmpx2 = tmp.rightdim.width;
@@ -147,25 +139,25 @@ public class Normalbullet extends Bullet{
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
-				return;
+				return true;
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
-				return;
+				return true;
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
 				direction.height = -(direction.height);
 				bounce--;
 				wallsound();
-				return;
+				return true;
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 ) {
 				direction.height = -(direction.height);
 				bounce--;
 				wallsound();
-				return;
+				return true;
 			}
 		}
 		
@@ -179,7 +171,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
@@ -188,7 +180,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
@@ -197,7 +189,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 )  {
@@ -206,7 +198,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 		}
@@ -221,7 +213,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
@@ -230,7 +222,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
@@ -239,7 +231,7 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 ) {
@@ -248,9 +240,27 @@ public class Normalbullet extends Bullet{
 					tmp.attacked();
 					bounce--;
 					hitsound();
-					return;
+					return false;
 				}
 			}
+		}
+		return false;
+	}
+	
+	public void directPlus() {
+		if(collisiontest()) {
+			if(direction.width < 0)
+				pos.width += (direction.width - 5);
+			else
+				pos.width += (direction.width + 5);
+			if(direction.height < 0)
+				pos.height += (direction.height - 10);
+			else
+				pos.height += (direction.height + 10);
+		}
+		else {
+			pos.width += direction.width;
+			pos.height += direction.height;
 		}
 	}
 	
