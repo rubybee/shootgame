@@ -34,13 +34,13 @@ public class Normalbullet extends Bullet{
 		size = new Dimension(20, 40);
 		
 		Dimension startpos = new Dimension(100, 600);
-		Dimension tmpDirection = new Dimension(x-startpos.width - 12, y-startpos.height - 22);
-		double tmplong = Math.sqrt(Math.pow(x-startpos.width, 2) + Math.pow(y-startpos.height, 2));
-		double speed = 16;
+		Dimension tmpDirection = new Dimension(x-(startpos.width + 12), y-(startpos.height + 24));
+		double tmplong = Math.sqrt(Math.pow(x-(startpos.width + 12), 2) + Math.pow(y-(startpos.height + 24), 2));
+		double speed = 17;
 		
 		//direction calculate need
 		//direction calculate need
-		shootbullet(startpos.width, startpos.height, (int)(tmpDirection.width/tmplong * speed  + 0.5), (int)(tmpDirection.height/tmplong * speed + 0.5));
+		shootbullet(startpos.width, startpos.height, (int)(tmpDirection.width/tmplong * speed), (int)(tmpDirection.height/tmplong * speed));
 		//юс╫ц
 	}
 
@@ -250,13 +250,13 @@ public class Normalbullet extends Bullet{
 	public void directPlus() {
 		if(collisiontest()) {
 			if(direction.width < 0)
-				pos.width += (direction.width - 5);
+				pos.width += (direction.width - 8);
 			else
-				pos.width += (direction.width + 5);
+				pos.width += (direction.width + 8);
 			if(direction.height < 0)
-				pos.height += (direction.height - 10);
+				pos.height += (direction.height - 11);
 			else
-				pos.height += (direction.height + 10);
+				pos.height += (direction.height + 11);
 		}
 		else {
 			pos.width += direction.width;

@@ -100,6 +100,8 @@ public class Normalzombie extends Enemy{
 		//die motion
 		
 		die = true;
+		
+		
 		GameScreen.scores[GameScreen.index].plusScore();
 		
 		dieEffect.start();

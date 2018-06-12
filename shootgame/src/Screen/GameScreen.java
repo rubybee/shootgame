@@ -118,12 +118,6 @@ public class GameScreen extends Thread implements Screen{
 		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).close();
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).close();
 		
-		enes = null;
-		bullets = null;
-		firebullets = null;
-		movenes = null;
-		structures = null;
-		
 		runnable = false;
 		click = false;
 	}
@@ -147,12 +141,13 @@ public class GameScreen extends Thread implements Screen{
 		else {
 			if(!allkilled) {
 				Bullet tmp = bullets.get(bullets.size() - 1);
-				bullets.remove(bullets.size() - 1);
-				if(bullets.size() == 0)
-					bulletempty = true;
 				if(tmp.gettype() == 0) {
 					firebullets.add(new Normalbullet(shootpointx, shootpointy));
 				}
+				bullets.remove(bullets.size() - 1);
+				if(bullets.size() == 0)
+					bulletempty = true;
+				
 			}
 			
 		}
@@ -164,21 +159,19 @@ public class GameScreen extends Thread implements Screen{
 		click = true;
 		
 		while(true) {
-			for (int i = 0; i < firebullets.size(); i++) {
-				if(firebullets.get(i).bounce < 1) {
-					firebullets.get(i).close();
-					firebullets.remove(i);
-					if(bulletempty && firebullets.size() == 0) {
-							try {
-								sleep(1000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							ShootGame.gstors(2);
-							//type 2
-					}
+			
+			deleteBullet();
+			
+			if((!allkilled) && bulletempty && firebullets.size() == 0) {
+				try {
+					sleep(1500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+				
+				ShootGame.gstors(2);
+				//type 2
 			}
 			
 			for (int i = 0; i < structures.size(); i++) if(structures.get(i).delete) {
@@ -187,32 +180,33 @@ public class GameScreen extends Thread implements Screen{
 			
 			if(!runnable) return;
 			
-			for (int i = 0; i < enes.size(); i++) if(enes.get(i).delete) {
-				System.out.println(i);
-				enes.get(i).close();
-				enes.remove(i);
+			for (int i = 0; i < enes.size(); i++) {
+				
+				
+				if(enes.get(i).delete) {
+					System.out.println(i);
+					enes.get(i).close();
+					enes.remove(i);
+				}
+				
 				if(enes.size() == 0)
 					allkilled = true;
+				
+				
 				if(allkilled) {
+					deleteBullet();
 					for(int j = 0; j < bullets.size(); j++) {
-						if(j == 0) {
-							try {
-								sleep(1500);
-								sleep();
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+						try {
+							for(int k = 0; k < 14; k++) {
+								sleep(50);
+								deleteBullet();
 							}
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-						else {
-							try {
-								sleep(800);
-								sleep();
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
+						deleteBullet();
+						
 						sleep();
 						scorenum = j+1;
 						if(!runnable) return;
@@ -222,7 +216,7 @@ public class GameScreen extends Thread implements Screen{
 						if(!runnable) return;
 					}
 					try {
-						sleep(1500);
+						sleep(1000);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -236,8 +230,8 @@ public class GameScreen extends Thread implements Screen{
 					ShootGame.gstors(1);
 					
 				}
-					
 			}
+				
 			
 			if(!runnable) return;
 			
@@ -251,6 +245,15 @@ public class GameScreen extends Thread implements Screen{
 		}
 	}
 	
+	public void deleteBullet() {
+		for (int i = 0; i < firebullets.size(); i++) {
+			if(firebullets.get(i).bounce < 1) {
+				firebullets.get(i).close();
+				firebullets.remove(i);
+			}
+		}
+	}
+
 	public void sleep() {
 		do {
 			try {

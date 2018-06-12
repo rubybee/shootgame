@@ -20,7 +20,7 @@ public abstract class Enemy extends Thread{
 	
 	public boolean runnable = true;
 	
-	boolean die = false;
+	public boolean die = false;
 	public boolean delete = false;
 	boolean attack;
 	
