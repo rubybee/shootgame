@@ -15,8 +15,11 @@ public abstract class MovableEnemy extends Thread{
 	int hp, pattern;
 	int xsize, ysize;
 	
-	Image img;
+	Image idleleftimg;
+	Image dieimg;
+	Image idlerightimg;
 	
+	boolean right;
 	public boolean runnable = true;
 	boolean die = false;
 	public boolean delete = false;

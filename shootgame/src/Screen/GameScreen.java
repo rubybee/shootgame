@@ -17,6 +17,7 @@ import object.Bullet;
 import object.Enemy;
 import object.MovableEnemy;
 import object.Normalbullet;
+import object.Normalmovezombie;
 import object.Normalzombie;
 import object.Score;
 import object.Structure;
@@ -197,59 +198,62 @@ public class GameScreen extends Thread implements Screen{
 					enes.get(i).close();
 					enes.remove(i);
 				}
-				
-				if(enes.size() == 0)
-					allkilled = true;
+			
 				
 				
-				if(allkilled) {
-					deleteBullet();
-					for(int j = 0; j < bullets.size(); j++) {
-						try {
-							for(int k = 0; k < 14; k++) {
-								sleep(50);
-								deleteBullet();
-							}
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						deleteBullet();
-						
-						sleep();
-						scorenum = j+1;
-						if(!runnable) return;
-						scores[index].plusbBulletScore();
-						scoresound = new Sound("showscore.mp3", false);
-						scoresound.start();
-						if(!runnable) return;
-					}
-					try {
-						sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					if(!runnable) return;
-					sleep();
-					if(!runnable) return;
-					scores[index].sethighscore(index);
-					if(!runnable) return;
-					ShootGame.gstors(1);
-					
-				}
 			}
 				
 			
 			if(!runnable) return;
 			
 			for (int i = 0; i < movenes.size(); i++) if(movenes.get(i).delete) {
+				System.out.println(i);
 				movenes.get(i).close();
 				movenes.remove(i);
 			}
 			
 			if(!runnable) return;
+			
+			if(enes.size() == 0 && movenes.size() == 0)
+				allkilled = true;
+			
+			if(allkilled) {
+				deleteBullet();
+				for(int j = 0; j < bullets.size(); j++) {
+					try {
+						for(int k = 0; k < 14; k++) {
+							sleep(50);
+							deleteBullet();
+						}
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					deleteBullet();
+					
+					sleep();
+					scorenum = j+1;
+					if(!runnable) return;
+					scores[index].plusbBulletScore();
+					scoresound = new Sound("showscore.mp3", false);
+					scoresound.start();
+					if(!runnable) return;
+				}
+				try {
+					sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(!runnable) return;
+				sleep();
+				if(!runnable) return;
+				scores[index].sethighscore(index);
+				if(!runnable) return;
+				ShootGame.gstors(1);
+				
+			}
 			
 		}
 	}
@@ -299,7 +303,7 @@ public class GameScreen extends Thread implements Screen{
 		}
 		
 		else if (index == 1) {
-			enes.add(new Normalzombie(400, 400, 0));
+			movenes.add(new Normalmovezombie(400, 400, 100));
 			bullets.add(new Normalbullet());	//just test
 			bullets.add(new Normalbullet());
 		}

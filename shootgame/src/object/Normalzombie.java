@@ -39,8 +39,6 @@ public class Normalzombie extends Enemy{
 			g.drawImage(dieimg, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
 			dieEffect.screenDraw(g);
 		}
-		
-		
 	}
 	
 	public void close() {
