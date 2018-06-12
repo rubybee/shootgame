@@ -111,8 +111,6 @@ public class ShootGame extends JFrame {
 			}
 		};
 		startgame.schedule(showstart, 2000);
-			
-		//screenstatus = 2;
 	}
 	
 	public static void rstogs(int index) {

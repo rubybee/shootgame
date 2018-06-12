@@ -24,7 +24,6 @@ public class GamestartScreen implements Screen{
 
 	public GamestartScreen() {
 		background = Mainclass.startbackground.get(GameScreen.index/8);
-		System.out.println(GameScreen.index);
 	}
 	
 	@Override
