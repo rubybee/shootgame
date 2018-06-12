@@ -20,7 +20,7 @@ public class ShootGame extends JFrame {
 	public static PauseScreen PS = new PauseScreen();
 	public static SelectScreen SS = new SelectScreen();
 	public static ResultScreen RS = new ResultScreen();
-	public static GamestartScreen GSS = new GamestartScreen();
+	public static GamestartScreen GSS;
 	public static GameScreen GS;
 	
 	
@@ -100,27 +100,31 @@ public class ShootGame extends JFrame {
 	public static void sstogs(int index) {
 		GS = new GameScreen(index);
 		introSound.close();
+		GSS = new GamestartScreen();
 		screenstatus = 5;
 		Timer startgame = new Timer();
 		TimerTask showstart = new TimerTask() {
 			@Override
 			public void run() {
 				screenstatus = 2;
+				GSS = null;
 			}
 		};
 		startgame.schedule(showstart, 2000);
-		
+			
 		//screenstatus = 2;
 	}
 	
 	public static void rstogs(int index) {
 		GS = new GameScreen(index);
+		GSS = new GamestartScreen();
 		screenstatus = 5;
 		Timer startgame = new Timer();
 		TimerTask showstart = new TimerTask() {
 			@Override
 			public void run() {
 				screenstatus = 2;
+				GSS = null;
 			}
 		};
 		startgame.schedule(showstart, 2000);

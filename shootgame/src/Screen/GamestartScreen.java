@@ -23,8 +23,10 @@ public class GamestartScreen implements Screen{
 	
 
 	public GamestartScreen() {
-		background = new ImageIcon(Mainclass.class.getResource("../image/gamestart.jpg")).getImage();
+		background = Mainclass.startbackground.get(GameScreen.index/8);
+		System.out.println(GameScreen.index);
 	}
+	
 	@Override
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(background, 0, 0, null);

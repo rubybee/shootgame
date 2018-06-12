@@ -19,6 +19,7 @@ public class Mainclass {
 	
 	public static ArrayList<Image> background = new ArrayList<Image>();		//images of gamebackground
 	public static ArrayList<Image> pausebackground = new ArrayList<Image>();		//images of gamebackground
+	public static ArrayList<Image> startbackground = new ArrayList<Image>();
 	
 	//images of wall
 	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	
@@ -56,14 +57,19 @@ public class Mainclass {
 	
 	public static void main(String[] args) {
 		
-		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
+		for(int i = 0; i < Mainclass.mapnumber/8; i++) {
 			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamebackground" + i + ".jpg")).getImage();
 			background.add(tmp);
 		}
 		
-		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
+		for(int i = 0; i < Mainclass.mapnumber/8; i++) {
 			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamebackgroundforpause" + i + ".jpg")).getImage();
 			pausebackground.add(tmp);
+		}
+		
+		for(int i = 0; i < Mainclass.mapnumber/8; i++) {
+			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamestart" + i + ".jpg")).getImage();
+			startbackground.add(tmp);
 		}
 		
 		new ShootGame();

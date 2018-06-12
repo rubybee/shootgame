@@ -15,8 +15,7 @@ public class Normalmovezombie extends MovableEnemy{
 	
 	public Normalmovezombie(int leftx, int lefty, int move){
 		
-//		movepoint = move;
-		movepoint = 100;
+		movepoint = move;
 		tmpmovepoint = 0;
 		
 		right = true;

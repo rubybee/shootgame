@@ -404,47 +404,93 @@ public class GameScreen extends Thread implements Screen{
 		}
 		
 		else if (index == 7) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 8) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 9) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 10) {
 			setPlayerPos(50, 560);
 			
 			movenes.add(new Normalmovezombie(400, 400, 200));
-			bullets.add(new Normalbullet());	//just test
-			bullets.add(new Normalbullet());
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 11) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 12) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 13) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 14) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 15) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		else if (index == 16) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			
+			
+			bulletAdd();
 		}
 		
 		
