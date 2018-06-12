@@ -148,6 +148,8 @@ public class GameScreen extends Thread implements Screen{
 			if(!allkilled) {
 				Bullet tmp = bullets.get(bullets.size() - 1);
 				if(tmp.gettype() == 0) {
+					Sound shootSound = new Sound("shoot.mp3", false);
+					shootSound.start();
 					firebullets.add(new Normalbullet(shootpointx, shootpointy));
 				}
 				bullets.remove(bullets.size() - 1);
@@ -402,11 +404,7 @@ public class GameScreen extends Thread implements Screen{
 		}
 		
 		else if (index == 7) {
-			setPlayerPos(50, 560);
 			
-			movenes.add(new Normalmovezombie(400, 400, 200));
-			bullets.add(new Normalbullet());	//just test
-			bullets.add(new Normalbullet());
 		}
 		
 		else if (index == 8) {
@@ -418,7 +416,11 @@ public class GameScreen extends Thread implements Screen{
 		}
 		
 		else if (index == 10) {
+			setPlayerPos(50, 560);
 			
+			movenes.add(new Normalmovezombie(400, 400, 200));
+			bullets.add(new Normalbullet());	//just test
+			bullets.add(new Normalbullet());
 		}
 		
 		else if (index == 11) {
