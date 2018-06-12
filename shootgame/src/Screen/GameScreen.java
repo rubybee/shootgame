@@ -1,16 +1,10 @@
 package Screen;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 import object.Bomb;
 import object.Bullet;
@@ -21,7 +15,7 @@ import object.Normalzombie;
 import object.Score;
 import object.Structure;
 import object.Wall;
-//import object.WoodWall;
+import object.WoodWall;
 import shootgame.Mainclass;
 import shootgame.ShootGame;
 import shootgame.Sound;
@@ -62,6 +56,8 @@ public class GameScreen extends Thread implements Screen{
 	
 	public boolean runnable;
 	
+	public static Dimension playerPos = new Dimension();
+	
 	public GameScreen(int index) {
 		
 		runnable = true;
@@ -101,7 +97,7 @@ public class GameScreen extends Thread implements Screen{
 	@Override
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(Mainclass.background.get(index/8), 0, 0, null);		//change background at 8th 16th 24th.... map
-		g.drawImage(Mainclass.player, 50, 560, 100, 100, null);
+		g.drawImage(Mainclass.player, playerPos.width, playerPos.height, 100, 100, null);
 		g.setFont(smallfont);
 		g.setColor(Color.yellow);
 		for (int i = 0; i < structures.size(); i++) structures.get(i).screenDraw(g);
@@ -273,6 +269,19 @@ public class GameScreen extends Thread implements Screen{
 		}while(pause);
 	}
 	
+	public void bulletAdd() {
+		bullets.add(new Normalbullet());
+		bullets.add(new Normalbullet());
+		bullets.add(new Normalbullet());
+		bullets.add(new Normalbullet());
+		bullets.add(new Normalbullet());
+	}
+	
+	public void setPlayerPos(int x, int y) {
+		playerPos.width = x;
+		playerPos.height = y;
+	}
+	
 	public void mapsetting() {
 		System.out.println("Ack");
 		
@@ -284,41 +293,141 @@ public class GameScreen extends Thread implements Screen{
 		//basic corner
 		
 		if(index == 0) {
+			setPlayerPos(50, 560);
+			
 			structures.add(new Wall(500, 400, 610, 440));
+			
 			enes.add(new Normalzombie(700, 570, 2));
 			enes.add(new Normalzombie(1000, 570, 1));
 			enes.add(new Normalzombie(530, 290, 3));
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
-
+			
+			bulletAdd();
 		}
 		
 		else if (index == 1) {
+			setPlayerPos(50, 560);
+			
 			structures.add(new Wall(500, 400, 900, 440));
 			structures.add(new Wall(750, 200, 1000, 240));
+			
 			enes.add(new Normalzombie(530, 290, 3));
 			enes.add(new Normalzombie(730, 290, 1));
 			enes.add(new Normalzombie(800, 90, 3));
 			enes.add(new Normalzombie(700, 570, 2));
-			bullets.add(new Normalbullet());	//just test
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
-			bullets.add(new Normalbullet());
+			bulletAdd();
 		}
 		
 		else if (index == 2) {
-			//structures.add(new WoodWall(300, 300, 800, 330));
-			enes.add(new Normalzombie(200, 400, 0));	//just test
-			enes.add(new Normalzombie(400, 400, 1));
-			enes.add(new Normalzombie(600, 400, 2));
-			enes.add(new Normalzombie(800, 400, 1));
-			enes.add(new Normalzombie(1000, 400, 1));
+			setPlayerPos(50, 560);
+			
+			structures.add(new Wall(700, 400, 1100, 440));
+			structures.add(new Wall(500, 500, 1000, 540));
+			structures.add(new Wall(300, 600, 900, 640));
+			
+			enes.add(new Normalzombie(370, 490, 2));
+			enes.add(new Normalzombie(570, 390, 1));
+			enes.add(new Normalzombie(770, 290, 3));
+			enes.add(new Normalzombie(870, 290, 0));
+			enes.add(new Normalzombie(970, 290, 1));
+			
+			
+			bulletAdd();
+		}
+		
+		else if (index == 3) {
+			setPlayerPos(50, 560);
+			
+			structures.add(new Wall(510, 300, 550, 480));
+			structures.add(new Wall(510, 480, 800, 520));
+			structures.add(new Wall(760, 300, 800, 480));
+			structures.add(new Wall(900, 500, 940, 700));
+		
+			enes.add(new Normalzombie(600, 370, 3));
+			enes.add(new Normalzombie(1000, 570, 1));
+			
+			bulletAdd();
+		}
+		
+		else if (index == 4) {
+			setPlayerPos(580, 100);
+			
+			structures.add(new Wall(40, 300, 200, 340));
+			structures.add(new Wall(1080, 300, 1240, 340));
+			structures.add(new Wall(530, 510, 720, 550));
+			
+			enes.add(new Normalzombie(580, 400, 3));
+			enes.add(new Normalzombie(90, 190, 3));
+			enes.add(new Normalzombie(1100, 190, 3));
+			
+			bulletAdd();
 			
 		}
+		else if (index == 5) {
+			setPlayerPos(550, 100);
+			
+			structures.add(new Wall(350, 300, 390, 540));
+			structures.add(new Wall(350, 500, 1240, 540));
+			
+			enes.add(new Normalzombie(600, 390, 3));
+			enes.add(new Normalzombie(700, 390, 1));
+			enes.add(new Normalzombie(800, 390, 0));
+			enes.add(new Normalzombie(900, 390, 2));
+			enes.add(new Normalzombie(300, 570, 1));
+			
+			bulletAdd();
+			
+		}
+		
+		else if (index == 6) {
+			setPlayerPos(50, 560);
+			
+			structures.add(new Wall(400, 450, 1100, 490));
+			
+		}
+		
+		else if (index == 7) {
+			
+		}
+		
+		else if (index == 8) {
+			
+		}
+		
+		else if (index == 9) {
+			
+		}
+		
+		else if (index == 10) {
+			
+		}
+		
+		else if (index == 11) {
+			
+		}
+		
+		else if (index == 12) {
+			
+		}
+		
+		else if (index == 13) {
+			
+		}
+		
+		else if (index == 14) {
+			
+		}
+		
+		else if (index == 15) {
+			
+		}
+		
+		else if (index == 16) {
+			
+		}
+		
+		
+		
+		
 	}
 
 }

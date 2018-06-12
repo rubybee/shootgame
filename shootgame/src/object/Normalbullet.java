@@ -33,7 +33,7 @@ public class Normalbullet extends Bullet{
 		imagepos = new Dimension(0, 0);
 		size = new Dimension(20, 40);
 		
-		Dimension startpos = new Dimension(100, 600);
+		Dimension startpos = new Dimension(GameScreen.playerPos.width + 40, GameScreen.playerPos.height + 40);
 		Dimension tmpDirection = new Dimension(x-(startpos.width + 12), y-(startpos.height + 24));
 		double tmplong = Math.sqrt(Math.pow(x-(startpos.width + 12), 2) + Math.pow(y-(startpos.height + 24), 2));
 		double speed = 17;
