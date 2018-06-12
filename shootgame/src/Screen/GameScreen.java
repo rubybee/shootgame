@@ -283,23 +283,29 @@ public class GameScreen extends Thread implements Screen{
 		//basic corner
 		
 		if(index == 0) {
-			structures.add(new Wall(300, 300, 800, 330));
-			enes.add(new Normalzombie(200, 400, 0));	//just test
-			enes.add(new Normalzombie(400, 400, 1));
-			enes.add(new Normalzombie(600, 400, 2));
-			enes.add(new Normalzombie(800, 400, 1));
-			enes.add(new Normalzombie(1000, 400, 1));
+			structures.add(new Wall(500, 400, 610, 440));
+			enes.add(new Normalzombie(700, 570, 2));
+			enes.add(new Normalzombie(1000, 570, 1));
+			enes.add(new Normalzombie(530, 290, 3));
+			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 
-			
 		}
 		
 		else if (index == 1) {
-			enes.add(new Normalzombie(400, 400, 0));
+			structures.add(new Wall(500, 400, 900, 440));
+			structures.add(new Wall(750, 200, 1000, 240));
+			enes.add(new Normalzombie(530, 290, 3));
+			enes.add(new Normalzombie(730, 290, 1));
+			enes.add(new Normalzombie(800, 90, 3));
+			enes.add(new Normalzombie(700, 570, 2));
 			bullets.add(new Normalbullet());	//just test
+			bullets.add(new Normalbullet());
+			bullets.add(new Normalbullet());
+			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 		}
 		
