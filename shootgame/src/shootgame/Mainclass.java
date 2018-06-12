@@ -44,6 +44,11 @@ public class Mainclass {
 	public static final Image zombiedie12 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie3.png")).getImage();
 	//images of diezombie
 	
+	//images of movezombie
+	public static final Image zombiemoveleft1 = new ImageIcon(Mainclass.class.getResource("../image/walkingzombieleft1.png")).getImage();
+	public static final Image zombiemoveright1 = new ImageIcon(Mainclass.class.getResource("../image/walkingzombieright1.png")).getImage();
+	//images of movezombie
+	
 	//image of bullet
 	public static final Image bullet = new ImageIcon(Mainclass.class.getResource("../image/bullet.png")).getImage();
 	
