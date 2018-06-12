@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import object.Bomb;
 import object.Bullet;
 import object.Enemy;
+import object.FireWall;
 import object.MovableEnemy;
 import object.Normalbullet;
 import object.Normalmovezombie;
@@ -146,12 +147,11 @@ public class GameScreen extends Thread implements Screen{
 		if(bullets.size() == 0) return;
 		else {
 			if(!allkilled) {
-				Bullet tmp = bullets.get(bullets.size() - 1);
-				if(tmp.gettype() == 0) {
-					Sound shootSound = new Sound("shoot.mp3", false);
-					shootSound.start();
-					firebullets.add(new Normalbullet(shootpointx, shootpointy));
-				}
+				System.out.println("shoot");
+				firebullets.add(new Normalbullet(shootpointx, shootpointy));
+				Sound shootSound = new Sound("shoot.mp3", false);
+				shootSound.start();
+				
 				bullets.remove(bullets.size() - 1);
 				if(bullets.size() == 0)
 					bulletempty = true;
@@ -168,8 +168,10 @@ public class GameScreen extends Thread implements Screen{
 		
 		while(true) {
 			
-			deleteBullet();
-			
+			int a = firebullets.size();
+			System.out.print("");
+			deleteBullet(a);
+
 			if((!allkilled) && bulletempty && firebullets.size() == 0) {
 				try {
 					sleep(1500);
@@ -181,6 +183,7 @@ public class GameScreen extends Thread implements Screen{
 				ShootGame.gstors(2);
 				//type 2
 			}
+			
 			
 			for (int i = 0; i < structures.size(); i++) if(structures.get(i).delete) {
 				structures.remove(i);
@@ -216,18 +219,18 @@ public class GameScreen extends Thread implements Screen{
 				allkilled = true;
 			
 			if(allkilled) {
-				deleteBullet();
+				deleteBullet(a);
 				for(int j = 0; j < bullets.size(); j++) {
 					try {
 						for(int k = 0; k < 14; k++) {
 							sleep(50);
-							deleteBullet();
+							deleteBullet(a);
 						}
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					deleteBullet();
+					deleteBullet(a);
 					
 					sleep();
 					scorenum = j+1;
@@ -256,8 +259,8 @@ public class GameScreen extends Thread implements Screen{
 		}
 	}
 	
-	public void deleteBullet() {
-		for (int i = 0; i < firebullets.size(); i++) {
+	public void deleteBullet(int size) {
+		for (int i = 0; i < size; i++) {
 			if(firebullets.get(i).bounce < 1) {
 				firebullets.get(i).close();
 				firebullets.remove(i);
@@ -305,7 +308,7 @@ public class GameScreen extends Thread implements Screen{
 			
 			enes.add(new Normalzombie(700, 570, 2));
 			enes.add(new Normalzombie(1000, 570, 1));
-			enes.add(new Normalzombie(500, 290, 3));
+			enes.add(new Normalzombie(400, 290, 3));
 			
 			bulletAdd();
 		}
@@ -404,9 +407,19 @@ public class GameScreen extends Thread implements Screen{
 		}
 		
 		else if (index == 7) {
-			setPlayerPos(50, 560);
+			setPlayerPos(50, 100);
 			
-			movenes.add(new Normalmovezombie(400, 400, 200));
+			structures.add(new WoodWall(280, 70, 310, 260));
+			structures.add(new WoodWall(40, 320, 210, 350));
+			structures.add(new Wall(300, 450, 1000, 490));
+			structures.add(new Wall(610, 250, 650, 450));
+			
+			
+			
+			enes.add(new Normalzombie(500, 340, 1));
+			enes.add(new Normalzombie(420, 340, 3));
+			enes.add(new Normalzombie(700, 340, 1));
+			enes.add(new Normalzombie(800, 340, 1));
 			
 			
 			bulletAdd();
@@ -414,6 +427,8 @@ public class GameScreen extends Thread implements Screen{
 		
 		else if (index == 8) {
 			setPlayerPos(50, 560);
+			
+			structures.add(new FireWall(350, 500, 1240, 540));
 			
 			movenes.add(new Normalmovezombie(400, 400, 200));
 			

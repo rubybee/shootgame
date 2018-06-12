@@ -24,6 +24,8 @@ public class Mainclass {
 	//images of wall
 	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	
 	public static final Image woodwall = new ImageIcon(Mainclass.class.getResource("../image/woodwall.png")).getImage();
+	public static final Image firewall = new ImageIcon(Mainclass.class.getResource("../image/firewall.png")).getImage();
+	
 	//images of wall
 	
 	public static final Image player = new ImageIcon(Mainclass.class.getResource("../image/player.gif")).getImage();

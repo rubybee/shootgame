@@ -69,7 +69,7 @@ public class Normalbullet extends Bullet{
 			size = new Dimension(30, 40);
 			imagepos.width += size.width;
 			setcenter();
-			if(bounce == 0) break;
+			if(bounce == 0) return;
 
 			sleep();
 			if(!runnable) return;
@@ -79,7 +79,7 @@ public class Normalbullet extends Bullet{
 			size = new Dimension(30, 40);
 			imagepos.width += size.width;
 			setcenter();
-			if(bounce == 0) break;
+			if(bounce == 0) return;;
 			
 			sleep();
 			if(!runnable) return;
@@ -87,7 +87,7 @@ public class Normalbullet extends Bullet{
 			directPlus();
 			imagepos.width += size.width;
 			setcenter();
-			if(bounce == 0) break;
+			if(bounce == 0) return;;
 			
 			sleep();
 			if(!runnable) return;
@@ -96,6 +96,7 @@ public class Normalbullet extends Bullet{
 			directPlus();
 			imagepos.width -= size.width;
 			setcenter();
+			if(bounce == 0) return;;
 			
 			sleep();
 			if(!runnable) return;
@@ -104,6 +105,7 @@ public class Normalbullet extends Bullet{
 			size = new Dimension(40, 40);
 			imagepos.width -= size.width;
 			setcenter();
+			if(bounce == 0) return;;
 			
 			sleep();
 			if(!runnable) return;
@@ -113,6 +115,7 @@ public class Normalbullet extends Bullet{
 			size = new Dimension(20, 40);
 			imagepos.width -= size.width;
 			setcenter();
+			if(bounce == 0) return;
 		}
 	}
 	
@@ -139,6 +142,10 @@ public class Normalbullet extends Bullet{
 				if(tmp.gettype() == 1) {
 					tmp.destruct();
 				}
+				else if(tmp.gettype() == 2) {
+					bounce = 0;
+					System.out.println(bounce);
+				}
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
@@ -148,6 +155,11 @@ public class Normalbullet extends Bullet{
 				if(tmp.gettype() == 1) {
 					tmp.destruct();
 				}
+				else if(tmp.gettype() == 2) {
+					bounce = 0;
+					System.out.println(bounce);
+				}
+
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
@@ -157,6 +169,11 @@ public class Normalbullet extends Bullet{
 				if(tmp.gettype() == 1) {
 					tmp.destruct();
 				}
+				else if(tmp.gettype() == 2) {
+					bounce = 0;
+					System.out.println(bounce);
+				}
+					
 				direction.height = -(direction.height);
 				bounce--;
 				wallsound();
@@ -166,6 +183,11 @@ public class Normalbullet extends Bullet{
 				if(tmp.gettype() == 1) {
 					tmp.destruct();
 				}
+				else if(tmp.gettype() == 2) {
+					bounce = 0;
+					System.out.println(bounce);
+				}
+					
 				direction.height = -(direction.height);
 				bounce--;
 				wallsound();
