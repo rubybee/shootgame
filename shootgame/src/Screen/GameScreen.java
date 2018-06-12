@@ -21,6 +21,7 @@ import object.Normalzombie;
 import object.Score;
 import object.Structure;
 import object.Wall;
+//import object.WoodWall;
 import shootgame.Mainclass;
 import shootgame.ShootGame;
 import shootgame.Sound;
@@ -310,7 +311,12 @@ public class GameScreen extends Thread implements Screen{
 		}
 		
 		else if (index == 2) {
-			
+			//structures.add(new WoodWall(300, 300, 800, 330));
+			enes.add(new Normalzombie(200, 400, 0));	//just test
+			enes.add(new Normalzombie(400, 400, 1));
+			enes.add(new Normalzombie(600, 400, 2));
+			enes.add(new Normalzombie(800, 400, 1));
+			enes.add(new Normalzombie(1000, 400, 1));
 			
 		}
 	}

@@ -20,7 +20,11 @@ public class Mainclass {
 	public static ArrayList<Image> background = new ArrayList<Image>();		//images of gamebackground
 	public static ArrayList<Image> pausebackground = new ArrayList<Image>();		//images of gamebackground
 	
-	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	//images of wall
+	//images of wall
+	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	
+	public static final Image woodwall = new ImageIcon(Mainclass.class.getResource("../image/woodwall.png")).getImage();
+	//images of wall
+	
 	public static final Image player = new ImageIcon(Mainclass.class.getResource("../image/player.gif")).getImage();
 	
 	//images of zombie
@@ -32,11 +36,13 @@ public class Mainclass {
 	public static final Image zombie6 = new ImageIcon(Mainclass.class.getResource("../image/zombie6.jpg")).getImage();
 	public static final Image zombie7 = new ImageIcon(Mainclass.class.getResource("../image/zombie7.jpg")).getImage();
 	public static final Image zombie8 = new ImageIcon(Mainclass.class.getResource("../image/zombie8.jpg")).getImage();
+	//images of zombie
 	
 	//images of diezombie
 	public static final Image zombiedie1 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie1.png")).getImage();
 	public static final Image zombiedie11 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie2.png")).getImage();
 	public static final Image zombiedie12 = new ImageIcon(Mainclass.class.getResource("../image/zombiedie3.png")).getImage();
+	//images of diezombie
 	
 	//image of bullet
 	public static final Image bullet = new ImageIcon(Mainclass.class.getResource("../image/bullet.png")).getImage();

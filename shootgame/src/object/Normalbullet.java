@@ -136,24 +136,36 @@ public class Normalbullet extends Bullet{
 			tmpx1 = tmp.leftdim.width; tmpx2 = tmp.rightdim.width;
 			tmpy1 = tmp.leftdim.height; tmpy2 = tmp.rightdim.height;
 			if(pos.width < tmpx2 && pos.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
+				if(tmp.gettype() == 1) {
+					tmp.destruct();
+				}
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
 				return true;
 			}
 			if(pos.width + size.width < tmpx2 && pos.width + size.width > tmpx1 && center.height < tmpy2 && center.height > tmpy1) {
+				if(tmp.gettype() == 1) {
+					tmp.destruct();
+				}
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
 				return true;
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
+				if(tmp.gettype() == 1) {
+					tmp.destruct();
+				}
 				direction.height = -(direction.height);
 				bounce--;
 				wallsound();
 				return true;
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 ) {
+				if(tmp.gettype() == 1) {
+					tmp.destruct();
+				}
 				direction.height = -(direction.height);
 				bounce--;
 				wallsound();

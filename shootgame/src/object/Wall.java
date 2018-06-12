@@ -13,9 +13,19 @@ public class Wall extends Structure{
 		leftdim = new Dimension(leftx,  lefty);
 		rightdim = new Dimension(rightx, righty);
 		img = Mainclass.wall;
+		type = 0;
 	}
 	
 	public void screenDraw(Graphics2D g){
 		g.drawImage(img, leftdim.width, leftdim.height, rightdim.width, rightdim.height, leftdim.width, leftdim.height, rightdim.width, rightdim.height, null);
+	}
+
+	@Override
+	public int gettype() {
+		return type;
+	}
+
+	@Override
+	public void destruct() {
 	}
 }
