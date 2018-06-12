@@ -301,11 +301,11 @@ public class GameScreen extends Thread implements Screen{
 		if(index == 0) {
 			setPlayerPos(50, 560);
 			
-			structures.add(new Wall(500, 400, 610, 440));
+			structures.add(new Wall(300, 400, 510, 440));
 			
 			enes.add(new Normalzombie(700, 570, 2));
 			enes.add(new Normalzombie(1000, 570, 1));
-			enes.add(new Normalzombie(530, 290, 3));
+			enes.add(new Normalzombie(500, 290, 3));
 			
 			bulletAdd();
 		}
