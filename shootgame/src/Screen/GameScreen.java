@@ -118,6 +118,12 @@ public class GameScreen extends Thread implements Screen{
 		for (int i = 0; i < firebullets.size(); i++) firebullets.get(i).close();
 		for (int i = 0; i < movenes.size(); i++) movenes.get(i).close();
 		
+		enes = null;
+		bullets = null;
+		firebullets = null;
+		movenes = null;
+		structures = null;
+		
 		runnable = false;
 		click = false;
 	}
@@ -209,9 +215,11 @@ public class GameScreen extends Thread implements Screen{
 						}
 						sleep();
 						scorenum = j+1;
+						if(!runnable) return;
 						scores[index].plusbBulletScore();
 						scoresound = new Sound("showscore.mp3", false);
 						scoresound.start();
+						if(!runnable) return;
 					}
 					try {
 						sleep(1500);
@@ -219,8 +227,12 @@ public class GameScreen extends Thread implements Screen{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
+					if(!runnable) return;
 					sleep();
+					if(!runnable) return;
 					scores[index].sethighscore(index);
+					if(!runnable) return;
 					ShootGame.gstors(1);
 					
 				}
@@ -261,11 +273,11 @@ public class GameScreen extends Thread implements Screen{
 		
 		if(index == 0) {
 			structures.add(new Wall(300, 300, 800, 330));
-			enes.add(new Normalzombie(400, 400, 0));	//just test
-			enes.add(new Normalzombie(500, 400, 1));
+			enes.add(new Normalzombie(200, 400, 0));	//just test
+			enes.add(new Normalzombie(400, 400, 1));
 			enes.add(new Normalzombie(600, 400, 2));
-			enes.add(new Normalzombie(700, 400, 1));
 			enes.add(new Normalzombie(800, 400, 1));
+			enes.add(new Normalzombie(1000, 400, 1));
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());
 			bullets.add(new Normalbullet());

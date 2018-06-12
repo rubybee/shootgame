@@ -5,14 +5,21 @@ import java.awt.Graphics2D;
 
 import Screen.GameScreen;
 import shootgame.Mainclass;
+import shootgame.hitEffect;
 
 public class Normalzombie extends Enemy{
 
+	hitEffect dieEffect;
+	
 	public Normalzombie(int leftx, int lefty, int startpattern){
+		
 		leftdim = new Dimension(leftx, lefty);
 		xsize = 80;
 		ysize = 120;
 		rightdim = new Dimension(leftx + xsize, lefty + ysize);
+		
+		dieEffect = new hitEffect();
+		dieEffect.setHitPos(leftdim);
 		
 		imageleftdim = new Dimension(startpattern * 80, 0);
 		imagerightdim = new Dimension(startpattern * 80 + 80, ysize);
@@ -30,6 +37,7 @@ public class Normalzombie extends Enemy{
 		if (!die) g.drawImage(idleimg, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
 		else{
 			g.drawImage(dieimg, leftdim.width, leftdim.height, rightdim.width, rightdim.height, imageleftdim.width, imageleftdim.height, imagerightdim.width, imagerightdim.height, null);
+			dieEffect.screenDraw(g);
 		}
 		
 		
@@ -93,6 +101,8 @@ public class Normalzombie extends Enemy{
 		
 		die = true;
 		GameScreen.scores[GameScreen.index].plusScore();
+		
+		dieEffect.start();
 		imageleftdim.width = 0;
 		imageleftdim.height = 0;
 		imagerightdim.width = 60;
