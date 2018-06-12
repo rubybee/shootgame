@@ -21,6 +21,7 @@ public class Mainclass {
 	public static ArrayList<Image> pausebackground = new ArrayList<Image>();		//images of gamebackground
 	
 	public static final Image wall = new ImageIcon(Mainclass.class.getResource("../image/wall.png")).getImage();	//images of wall
+	public static final Image player = new ImageIcon(Mainclass.class.getResource("../image/player.gif")).getImage();
 	
 	//images of zombie
 	public static final Image zombie1 = new ImageIcon(Mainclass.class.getResource("../image/zombie1.png")).getImage();	

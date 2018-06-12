@@ -2,10 +2,15 @@ package Screen;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import object.Bomb;
 import object.Bullet;
@@ -21,6 +26,8 @@ import shootgame.ShootGame;
 import shootgame.Sound;
 
 public class GameScreen extends Thread implements Screen{
+	
+	
 	
 	static Sound bgm;
 	Sound pausesound;
@@ -93,6 +100,7 @@ public class GameScreen extends Thread implements Screen{
 	@Override
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(Mainclass.background.get(index/8), 0, 0, null);		//change background at 8th 16th 24th.... map
+		g.drawImage(Mainclass.player, 50, 560, 100, 100, null);
 		g.setFont(smallfont);
 		g.setColor(Color.yellow);
 		for (int i = 0; i < structures.size(); i++) structures.get(i).screenDraw(g);
