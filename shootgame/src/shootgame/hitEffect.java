@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 import Screen.Screen;
 
-public class hitEffect extends Thread implements Screen{
+public class hitEffect extends Thread{
 	
 	Image hitImage;
 	private Dimension hitpos;
@@ -20,7 +20,6 @@ public class hitEffect extends Thread implements Screen{
 		hit = false;
 	}
 
-	@Override
 	public void screenDraw(Graphics2D g) {
 		if(hit) g.drawImage(hitImage, hitpos.width-40, hitpos.height-70, 200, 150, null);
 	}
