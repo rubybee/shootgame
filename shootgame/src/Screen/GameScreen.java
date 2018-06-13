@@ -168,9 +168,8 @@ public class GameScreen extends Thread implements Screen{
 		
 		while(true) {
 			
-			int a = firebullets.size();
 			System.out.print("");
-			deleteBullet(a);
+			deleteBullet();
 
 			if((!allkilled) && bulletempty && firebullets.size() == 0) {
 				try {
@@ -219,18 +218,18 @@ public class GameScreen extends Thread implements Screen{
 				allkilled = true;
 			
 			if(allkilled) {
-				deleteBullet(a);
+				deleteBullet();
 				for(int j = 0; j < bullets.size(); j++) {
 					try {
 						for(int k = 0; k < 14; k++) {
 							sleep(50);
-							deleteBullet(a);
+							deleteBullet();
 						}
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					deleteBullet(a);
+					deleteBullet();
 					
 					sleep();
 					scorenum = j+1;
@@ -259,8 +258,8 @@ public class GameScreen extends Thread implements Screen{
 		}
 	}
 	
-	public void deleteBullet(int size) {
-		for (int i = 0; i < size; i++) {
+	public void deleteBullet() {
+		for (int i = 0; i < firebullets.size(); i++) {
 			if(firebullets.get(i).bounce < 1) {
 				firebullets.get(i).close();
 				firebullets.remove(i);
@@ -423,28 +422,54 @@ public class GameScreen extends Thread implements Screen{
 			
 			
 			bulletAdd();
+			bullets.add(new Normalbullet());
 		}
 		
 		else if (index == 8) {
-			setPlayerPos(50, 560);
 			
-			structures.add(new FireWall(350, 500, 1240, 540));
+			setPlayerPos(400, 100);
 			
-			movenes.add(new Normalmovezombie(400, 400, 200));
+			structures.add(new FireWall(730, 370, 980, 410));
+			structures.add(new FireWall(270, 370, 510, 410));
+			structures.add(new Wall(510, 510, 730, 550));
+			structures.add(new Wall(40, 510, 260, 550));
+
+			
+			enes.add(new Normalzombie(590, 400, 3));
+			enes.add(new Normalzombie(80, 400, 0));
+			enes.add(new Normalzombie(620, 570, 0));
+			enes.add(new Normalzombie(520, 570, 0));
+			enes.add(new Normalzombie(420, 570, 0));
+			enes.add(new Normalzombie(900, 570, 3));
+			
 			
 			
 			bulletAdd();
+			bullets.add(new Normalbullet());
+			
+			
 		}
 		
 		else if (index == 9) {
 			setPlayerPos(50, 560);
 			
-			movenes.add(new Normalmovezombie(400, 400, 200));
+			structures.add(new WoodWall(550, 350, 800, 390));
+			structures.add(new FireWall(800, 350, 960, 390));
+			structures.add(new Wall(390, 350, 550, 390));
+			structures.add(new Wall(350, 350, 390, 680));
+			structures.add(new Wall(960, 350, 1000, 680));
+			
+			enes.add(new Normalzombie(410, 570, 2));
+			enes.add(new Normalzombie(430, 240, 1));
+			enes.add(new Normalzombie(620, 570, 0));
+			enes.add(new Normalzombie(1100, 570, 3));
+			
 			
 			
 			bulletAdd();
+			bullets.add(new Normalbullet());
 		}
-		
+		 
 		else if (index == 10) {
 			setPlayerPos(50, 560);
 			
@@ -452,6 +477,7 @@ public class GameScreen extends Thread implements Screen{
 			
 			
 			bulletAdd();
+			bullets.add(new Normalbullet());
 		}
 		
 		else if (index == 11) {
