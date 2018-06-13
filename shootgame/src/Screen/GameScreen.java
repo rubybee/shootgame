@@ -447,7 +447,6 @@ public class GameScreen extends Thread implements Screen{
 			bulletAdd();
 			bullets.add(new Normalbullet());
 			
-			
 		}
 		
 		else if (index == 9) {
@@ -464,16 +463,21 @@ public class GameScreen extends Thread implements Screen{
 			enes.add(new Normalzombie(620, 570, 0));
 			enes.add(new Normalzombie(1100, 570, 3));
 			
-			
-			
 			bulletAdd();
 			bullets.add(new Normalbullet());
 		}
 		 
 		else if (index == 10) {
-			setPlayerPos(50, 560);
+			setPlayerPos(500, 560);
 			
-			movenes.add(new Normalmovezombie(400, 400, 200));
+			structures.add(new Wall(300, 350, 1000, 390));
+			structures.add(new Wall(900, 350, 940, 680));
+			
+			movenes.add(new Normalmovezombie(380, 240, 200));
+			movenes.add(new Normalmovezombie(1000, 570, 100));
+			enes.add(new Normalzombie(700, 240, 0));
+			enes.add(new Normalzombie(800, 240, 0));
+			
 			
 			
 			bulletAdd();
@@ -484,6 +488,7 @@ public class GameScreen extends Thread implements Screen{
 			setPlayerPos(50, 560);
 			
 			movenes.add(new Normalmovezombie(400, 400, 200));
+			
 			
 			
 			bulletAdd();

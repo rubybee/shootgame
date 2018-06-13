@@ -23,6 +23,10 @@ public class Score implements Screen{
 		score += 1000;
 	}
 	
+	public void plusScore2() {
+		score += 2000;
+	}
+	
 	public void sethighscore(int index) {
 		if(highscores[index] < score)
 			highscores[index] = score;

@@ -15,6 +15,7 @@ public class Normalbullet extends Bullet{
 	int tmpx1, tmpx2, tmpy1, tmpy2;
 	private Sound wallsound;
 	private Sound hitsound;
+	private Sound explodesound;
 	
 	public Normalbullet() {
 		shoot = false;
@@ -146,6 +147,11 @@ public class Normalbullet extends Bullet{
 					bounce = 0;
 					System.out.println(bounce);
 				}
+				if(tmp.gettype() == 2)
+					explodeSound();
+				else
+					wallsound();
+
 				direction.width = -(direction.width);
 				bounce--;
 				wallsound();
@@ -159,10 +165,13 @@ public class Normalbullet extends Bullet{
 					bounce = 0;
 					System.out.println(bounce);
 				}
+				if(tmp.gettype() == 2)
+					explodeSound();
+				else
+					wallsound();
 
 				direction.width = -(direction.width);
 				bounce--;
-				wallsound();
 				return true;
 			}
 			if(pos.height < tmpy2 && pos.height > tmpy1 && center.width > tmpx1 && center.width < tmpx2) {
@@ -173,10 +182,13 @@ public class Normalbullet extends Bullet{
 					bounce = 0;
 					System.out.println(bounce);
 				}
+				if(tmp.gettype() == 2)
+					explodeSound();
+				else
+					wallsound();
 					
 				direction.height = -(direction.height);
 				bounce--;
-				wallsound();
 				return true;
 			}
 			if(pos.height + size.height > tmpy1 && pos.height + size.height < tmpy2 && center.width > tmpx1 && center.width < tmpx2 ) {
@@ -187,10 +199,13 @@ public class Normalbullet extends Bullet{
 					bounce = 0;
 					System.out.println(bounce);
 				}
+				if(tmp.gettype() == 2)
+					explodeSound();
+				else
+					wallsound();
 					
 				direction.height = -(direction.height);
 				bounce--;
-				wallsound();
 				return true;
 			}
 		}
@@ -301,6 +316,10 @@ public class Normalbullet extends Bullet{
 	private void wallsound() {
 		wallsound = new Sound("wall_collision.mp3", false);
 		wallsound.start();
+	}
+	private void explodeSound() {
+		explodesound = new Sound("explosion.mp3", false);
+		explodesound.start();
 	}
 	
 	private void hitsound() {

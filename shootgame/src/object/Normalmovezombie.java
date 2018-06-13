@@ -397,7 +397,7 @@ public class Normalmovezombie extends MovableEnemy{
 		die = true;
 		
 		
-		GameScreen.scores[GameScreen.index].plusScore();
+		GameScreen.scores[GameScreen.index].plusScore2();
 		
 		dieEffect.start();
 		imageleftdim.width = 0;
