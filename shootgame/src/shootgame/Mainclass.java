@@ -13,7 +13,7 @@ public class Mainclass {
 	
 	public static final int SCREEN_WIDTH = 1280;
 	public static final int SCREEN_HEIGHT = 720;
-	public static final int mapnumber = 16;		//number of maps
+	public static final int mapnumber = 11;		//number of maps
 	public static final int bulletsleeptime = 50;
 	public static final int bulletspeed = 5;
 	
@@ -59,17 +59,17 @@ public class Mainclass {
 	
 	public static void main(String[] args) {
 		
-		for(int i = 0; i < Mainclass.mapnumber/8; i++) {
+		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
 			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamebackground" + i + ".jpg")).getImage();
 			background.add(tmp);
 		}
 		
-		for(int i = 0; i < Mainclass.mapnumber/8; i++) {
+		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
 			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamebackgroundforpause" + i + ".jpg")).getImage();
 			pausebackground.add(tmp);
 		}
 		
-		for(int i = 0; i < Mainclass.mapnumber/8; i++) {
+		for(int i = 0; i < Mainclass.mapnumber/8 + 1; i++) {
 			Image tmp = new ImageIcon(Mainclass.class.getResource("../image/gamestart" + i + ".jpg")).getImage();
 			startbackground.add(tmp);
 		}
